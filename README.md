@@ -54,6 +54,7 @@ bx cr images
 
 # 2. Get and build the application code
 
+* Install the [Microservice Builder fabric](https://microservicebuilder.mybluemix.net/docs/installing_fabric_task.html) - these are various services that run on top of Kubernetes.
 * `git clone` the following projects:
    1. [sample.microservicebuilder.web-app](https://github.com/WASdev/sample.microservicebuilder.web-app)
    1. [sample.microservicebuilder.vote](https://github.com/WASdev/sample.microservicebuilder.vote)
@@ -62,6 +63,7 @@ bx cr images
    1. [sample.microservicebuilder.session](https://github.com/WASdev/sample.microservicebuilder.session)
 
 * `mvn clean package` in each ../sample.microservicebuilder.* projects
+
 
 # 3. Build application containers
 
