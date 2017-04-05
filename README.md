@@ -140,7 +140,7 @@ Deploy each microservice from its root directory with the command `kubectl apply
 
 Deploy nginx server from its root directory with the command `kubectl create -f deploy-nginx.yaml`.
 
-After you have created all the services and deployments, wait for 5 to 10 minutes. You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the application containers are ready.
+After you have created all the services and deployments, wait for 10 to 15 minutes. You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the application containers are ready.
 
 ![Kubernetes Status Page](images/kube_ui.png)
 
@@ -157,6 +157,22 @@ nginx-svc   10.10.10.167   <nodes>       80:30056/TCP   11s
 ```
 
 Now you can use the link **http://[IP]:30056** to access your application on browser.
+
+Web application home page
+
+![Web-app Home Page](images/ui1.png)
+
+When you click on speaker name
+
+![Speaker Info](images/ui2.png)
+
+When you click on schedules link
+
+![Schedule Info](images/ui3.png)
+
+When you click on vote link
+
+![Vote Info](images/ui4.png)
 
 # License
 [Apache 2.0](LICENSE)
