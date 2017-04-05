@@ -120,7 +120,7 @@ NAME             STATUS    AGE
 Replace the `$sourceIp` field in nginx.conf file present in nginx folder with the public ip of the node.
 Now build and push the docker image for the nginx server.
 ```
-cd sample.microservicebuilder.session
+cd nginx
 docker build -t registry.ng.bluemix.net/<namespace>/nginx-server .
 docker push registry.ng.bluemix.net/<namespace>/nginx-server
 ```
