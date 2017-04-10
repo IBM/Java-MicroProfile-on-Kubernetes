@@ -113,15 +113,15 @@ Build the nginx controller
 
 Get the public ip of the node
 
-```
+```bash
 $ kubectl get nodes
 NAME             STATUS    AGE
 169.47.241.106   Ready     23h
 ```
 
-Replace the `$sourceIp` field in nginx.conf file present in nginx folder with the public ip of the node.
+Set the value of `$sourceIp` field in nginx.conf file present in nginx folder with the public ip of the node.
 Now build and push the docker image for the nginx server.
-```
+```bash
 cd nginx
 docker build -t registry.ng.bluemix.net/<namespace>/nginx-server .
 docker push registry.ng.bluemix.net/<namespace>/nginx-server
@@ -129,16 +129,14 @@ docker push registry.ng.bluemix.net/<namespace>/nginx-server
 
 # 4. Create Services and Deployments
 
-Change the image name given in the deployment YAML in the manifests directory for all the projects with the newly build image names.
-```
-	containers:
-      - name: microservice-webapp
-        image: registry.ng.bluemix.net/<namespace>/microservice-webapp
+Change the image name given in the respective deployment YAML for the all the projects in the manifests directory with the newly build image names.
+```bash
+containers:
+    - name: microservice-webapp
+      image: registry.ng.bluemix.net/<namespace>/microservice-webapp
 ```
 
-Deploy each microservice from its root directory with the command `kubectl apply -f manifests`.
-
-Deploy nginx server from its root directory with the command `kubectl create -f deploy-nginx.yaml`.
+Deploy the microservice from the manifests directory with the command `kubectl create -f <filename>`.
 
 After you have created all the services and deployments, wait for 10 to 15 minutes. You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the application containers are ready.
 
@@ -147,7 +145,7 @@ After you have created all the services and deployments, wait for 10 to 15 minut
 
 After few minutes the following commands to get your public IP and NodePort number.
 
-```
+```bash
 $ kubectl get nodes
 NAME             STATUS    AGE
 169.47.241.106   Ready     23h
