@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: nginx-server
-        image: registry.ng.bluemix.net/ishan/nginx-server
+        image: registry.ng.bluemix.net/<namespace>/nginx-server
         ports:
         - containerPort: 80
 ---
