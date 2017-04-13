@@ -7,6 +7,16 @@ The MicroProfile is a baseline platform definition that optimizes Enterprise Jav
 
 With IBM Bluemix Container Service, you can deploy and manage your own Kubernetes cluster in the cloud that lets you automate the deployment, operation, scaling, and monitoring of containerized apps over a cluster of independent compute hosts called worker nodes.  We can then leverage Bluemix Container Service using Kubernetes to deploy scalable Cassandra cluster.
 
+![Flow](images/microprofile_kube.png)
+
+1. User of Conference microservices application accesses the web-application to see the speaker list
+2. Web application microservice connects with speaker microservice to retrieve the speaker list
+3. User selects a speaker and clicks on name of the speaker to see the details
+4. The web application microservices connects with sessions microservice to retrieve session details for the speaker
+5. In addition, it also connects with schedule microservice to retrieve the schedule for speaker
+6. User also retrieves the vote section to see the ratings for the session. 
+
+
 ## Prerequisite
 
 * Create a Kubernetes cluster with IBM Bluemix Container Service.
