@@ -30,6 +30,8 @@ sleep 3m
 }
 
 function run_tests() {
+bx cs workers sample
+$(bx cs cluster-config sample | grep -v "Downloading" | grep -v "OK" | grep -v "The")
 echo "Creating Deployments"
 git clone https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment.git
 cd kubernetes-container-service-java-microprofile-deployment
@@ -70,10 +72,15 @@ sleep_func
 
 function install_helm(){
   echo "Download Helm"
+  curl  https://kubernetes-helm.storage.googleapis.com/helm-v2.3.0-linux-amd64.tar.gz > helm-v2.3.0-linux-amd64.tar.gz
+  tar -xf helm-v2.3.0-linux-amd64.tar.gz
+  chmod +x ./linux-amd64
+  sudo mv ./linux-amd64/helm /usr/local/bin/helm
+
   # Download helm
-  curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
-  chmod 700 get_helm.sh
-  ./get_helm.sh
+  #curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+  #chmod 700 get_helm.sh
+  #./get_helm.sh
 
   # Install Tiller using Helm
   echo "Install Tiller"
