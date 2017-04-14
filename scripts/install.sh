@@ -33,46 +33,46 @@ function run_tests() {
 bx cs workers sample
 $(bx cs cluster-config sample | grep -v "Downloading" | grep -v "OK" | grep -v "The")
 
+echo "Creating Deployments"
+git clone https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment.git
+
 echo "Remnoving deployments"
 kubectl delete -f manifests
 
 echo "Installing Helm"
 install_helm
 
-echo "Creating Deployments"
-git clone https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment.git
-
 echo "Deploying speaker"
 cd kubernetes-container-service-java-microprofile-deployment/manifests
-kubectl create -f deploy_speaker.yaml
+kubectl create -f deploy-speaker.yaml
 sleep_func
 
 echo "Deploying schedule"
-kubectl create -f deploy_schedule.yaml
+kubectl create -f deploy-schedule.yaml
 sleep_func
 
 echo "Deploying vote"
-kubectl create -f deploy_vote.yaml
+kubectl create -f deploy-vote.yaml
 sleep_func
 
 echo "Deploying session"
-kubectl create -f deploy_session.yaml
+kubectl create -f deploy-session.yaml
 sleep_func
 
 echo "Deploying webapp"
-kubectl create -f deploy_webapp.yaml
+kubectl create -f deploy-webapp.yaml
 sleep_func
-
-sh ./deploy_config.sh
+chmod 755 ./deploy_config.sh
+sudo ./deploy_config.sh
 echo "Deploying nginx"
-kubectl create -f deploy_nginx.yaml
+kubectl create -f deploy-nginx.yaml
 sleep_func
 
 }
 
 function install_helm(){
   echo "Download Helm"
-  curl  https://kubernetes-helm.storage.googleapis.com/helm-v2.3.0-linux-amd64.tar.gz > helm-v2.3.0-linux-amd64.tar.gz
+  curl  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz > helm-v2.2.3-linux-amd64.tar.gz
   tar -xf helm-v2.3.0-linux-amd64.tar.gz
   chmod +x ./linux-amd64
   sudo mv ./linux-amd64/helm /usr/local/bin/helm
