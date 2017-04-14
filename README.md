@@ -1,9 +1,11 @@
+[![Build Status](https://travis-ci.org/IBM/kubernetes-java-microservice-deployment.svg?branch=master)](https://travis-ci.org/IBM/kubernetes-java-microservice-deployment)
+
 
 # Java microservices using Microprofile on Bluemix Container Service using Kubernetes
 
-This project demonstrates the deployment of a Java based microservices application using [Microprofile](http://microprofile.io) on [IBM Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers) using Kubernetes Cluster. 
+This project demonstrates the deployment of a Java based microservices application using [Microprofile](http://microprofile.io) on [IBM Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers) using Kubernetes Cluster.
 
-The MicroProfile is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. The Microservice Builder [sample application](https://github.com/WASdev/sample.microservicebuilder.docs) is a web application for managing a conference and is based on a number of discrete microservices. The front end is written in Angular; the backing microservices are in Java. All run on WebSphere Liberty, in Docker containers managed by Kubernetes. 
+The MicroProfile is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. The Microservice Builder [sample application](https://github.com/WASdev/sample.microservicebuilder.docs) is a web application for managing a conference and is based on a number of discrete microservices. The front end is written in Angular; the backing microservices are in Java. All run on WebSphere Liberty, in Docker containers managed by Kubernetes.
 
 With IBM Bluemix Container Service, you can deploy and manage your own Kubernetes cluster in the cloud that lets you automate the deployment, operation, scaling, and monitoring of containerized apps over a cluster of independent compute hosts called worker nodes.  We can then leverage Bluemix Container Service using Kubernetes to deploy scalable Cassandra cluster.
 
@@ -14,7 +16,7 @@ With IBM Bluemix Container Service, you can deploy and manage your own Kubernete
 3. User selects a speaker and clicks on name of the speaker to see the details
 4. The web application microservices connects with sessions microservice to retrieve session details for the speaker
 5. In addition, it also connects with schedule microservice to retrieve the schedule for speaker
-6. User also retrieves the vote section to see the ratings for the session. 
+6. User also retrieves the vote section to see the ratings for the session.
 
 
 ## Prerequisite
