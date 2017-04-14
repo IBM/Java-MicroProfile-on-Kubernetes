@@ -2,26 +2,18 @@
 
 This guide is intended for maintainers — anybody with commit access to one or more Developer Technology repositories.
 
-## Maintainers
-
-| Name | GitHub | Slack | email |
-|---|---|---|---|
-| Animesh Singh | singhan | animeshsingh | singhan@us.ibm.com |
-| Ryan Moe  | rmoe | rmoe | Ryan.Moe@ibm.com |
-
-## Methodoology:
+## Methodology:
 
 A master branch. This branch MUST be releasable at all times. Commits and merges against this branch MUST contain only bugfixes and/or security fixes. Maintenance releases are tagged against master.
 
-A develop branch. This branch contains your proposed changes
+A develop branch. This branch contains your proposed changes,
 
 The remainder of this document details how to merge pull requests to the repositories.
 
 ## Merge approval
 
 The project maintainers use LGTM (Looks Good To Me) in comments on the code review to
-indicate acceptance. A change requires LGTMs from two of the maintainers of each
-component affected. 
+indicate acceptance. A change requires LGTMs from two of the members of the [ogs-dta-committers](https://github.com/orgs/IBM/teams/ogs-dta-committers) team. If the code is written by a member, the change only requires one more LGTM.
 
 ## Reviewing Pull Requests
 
@@ -29,7 +21,7 @@ We recommend reviewing pull requests directly within GitHub. This allows a publi
 
 During your review, consider the following points:
 
-## Does the change have impact? 
+## Does the change have impact?
 
 While fixing typos is nice as it adds to the overall quality of the project, merging a typo fix at a time can be a waste of effort. (Merging many typo fixes because somebody reviewed the entire component, however, is useful!) Other examples to be wary of:
 
@@ -37,7 +29,7 @@ Changes in variable names. Ask whether or not the change will make understanding
 
 Essentially: feel free to close issues that do not have impact.
 
-## Do the changes make sense? 
+## Do the changes make sense?
 
 If you do not understand what the changes are or what they accomplish, ask the author for clarification. Ask the author to add comments and/or clarify test case names to make the intentions clear.
 
