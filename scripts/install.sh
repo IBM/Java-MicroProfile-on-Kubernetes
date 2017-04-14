@@ -23,7 +23,7 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 }
 
-function sleep() {
+function sleep_func() {
 #statements
 echo "sleeping for 3m"
 sleep 3m
@@ -43,28 +43,28 @@ sh ./install_helm.sh
 echo "Deploying speaker"
 cd manifests
 kubectl create -f deploy_speaker.yaml
-sleep
+sleep_func
 
 echo "Deploying schedule"
 kubectl create -f deploy_schedule.yaml
-sleep
+sleep_func
 
 echo "Deploying vote"
 kubectl create -f deploy_vote.yaml
-sleep
+sleep_func
 
 echo "Deploying session"
 kubectl create -f deploy_session.yaml
-sleep
+sleep_func
 
 echo "Deploying webapp"
 kubectl create -f deploy_webapp.yaml
-sleep
+sleep_func
 
 sh ./deploy_config.sh
 echo "Deploying nginx"
 kubectl create -f deploy_nginx.yaml
-sleep
+sleep_func
 
 }
 
