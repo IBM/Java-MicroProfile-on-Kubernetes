@@ -13,8 +13,8 @@ With [IBM Bluemix Container Service](https://console.ng.bluemix.net/catalog/?tax
 ![Flow](images/microprofile_kube.png)
 
 ## Included Components
-- [Bluemix container service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
-- [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
+- [Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
+- [Kubernetes Cluster](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
 - [MicroProfile](http://microprofile.io)
 - [Microservice Builder](https://developer.ibm.com/microservice-builder/)
 - [Bluemix DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
@@ -27,7 +27,6 @@ If you have not setup the Kubernetes cluster, please follow the [Creating a Kube
 * Install a Git client to obtain the sample code.
 * Install [Maven](https://maven.apache.org/download.cgi) and a Java 8 JDK.
 * Install a [Docker](https://docs.docker.com/engine/installation/) engine.
-
 
 ## Steps
 
