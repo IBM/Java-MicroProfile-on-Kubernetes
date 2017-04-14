@@ -15,7 +15,7 @@ sudo ./install_bluemix_cli
 
 function bluemix_auth() {
 echo "Authenticating with Bluemix"
-echo "1" | bx login -a https://api.ng.bluemix.net --apikey $API_KEY
+echo "y" | bx login -a https://api.ng.bluemix.net --apikey $API_KEY
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 bx plugin install container-service -r Bluemix
 echo "Installing kubectl"
@@ -38,7 +38,7 @@ echo "Remnoving deployments"
 kubectl delete -f manifests
 
 echo "Installing Helm"
-sh ./install_helm.sh
+install_helm
 
 echo "Deploying speaker"
 cd manifests
@@ -66,6 +66,24 @@ echo "Deploying nginx"
 kubectl create -f deploy_nginx.yaml
 sleep_func
 
+}
+
+function install_helm(){
+  echo "Download Helm"
+  # Download helm
+  curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+  chmod 700 get_helm.sh
+  ./get_helm.sh
+
+  # Install Tiller using Helm
+  echo "Install Tiller"
+  helm init
+
+  #Add the repository
+  helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
+
+  #Install Microservice Builder Fabric using Helm
+  helm install mb/fabric
 }
 
 function exit_tests() {
