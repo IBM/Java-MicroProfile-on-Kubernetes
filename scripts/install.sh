@@ -62,12 +62,18 @@ sleep_func
 echo "Deploying webapp"
 kubectl create -f deploy-webapp.yaml
 sleep_func
-chmod 755 ./deploy_config.sh
-sudo ./deploy_config.sh
+change_nginx
 echo "Deploying nginx"
 kubectl create -f deploy-nginx.yaml
 sleep_func
 
+}
+
+function change_nginx() {
+  #statements
+  IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
+  echo $IP_ADDRESS
+  sed -i '' 's/xx.xx.xx.xx/'$IP_ADDRESS'/g' ../manifests/deploy-nginx.yaml
 }
 
 function install_helm(){
@@ -94,8 +100,8 @@ function install_helm(){
 }
 
 function exit_tests() {
-kubectl delete -f manifests
-echo "Deployments Removed"
+  cd ..
+  kubectl delete -f manifests
 }
 
 

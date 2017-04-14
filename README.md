@@ -4,7 +4,7 @@
 
 This project demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on IBM Bluemix Container Service Kubernetes Cluster.
 
-[MicroProfile](http://microprofile.io) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. [Microservice Builder](https://developer.ibm.com/microservice-builder/) builds on top of MicroProfile.io, and provides extension for containerized apps created using the tool to be deployed to Kubernetes. 
+[MicroProfile](http://microprofile.io) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. [Microservice Builder](https://developer.ibm.com/microservice-builder/) builds on top of MicroProfile.io, and provides extension for containerized apps created using the tool to be deployed to Kubernetes.
 
 The Microservice Builder [sample application](https://github.com/WASdev/sample.microservicebuilder.docs) is a web application for managing a conference and is based on a number of discrete microservices. The front end is written in Angular; the backing microservices are in Java. All run on WebSphere Liberty, in Docker containers managed by Kubernetes.
 
@@ -124,16 +124,6 @@ docker push registry.ng.bluemix.net/<namespace>/microservice-session
 
 Build the nginx controller
 
-Get the public ip of the node
-
-```bash
-$ kubectl get nodes
-NAME             STATUS    AGE
-169.47.241.106   Ready     23h
-```
-
-Set the value of `$sourceIp` field in nginx.conf file present in nginx folder with the public ip of the node.
-Now build and push the docker image for the nginx server.
 ```bash
 cd nginx
 docker build -t registry.ng.bluemix.net/<namespace>/nginx-server .
@@ -142,12 +132,20 @@ docker push registry.ng.bluemix.net/<namespace>/nginx-server
 
 # 4. Create Services and Deployments
 
-Change the image name given in the respective deployment YAML for the all the projects in the manifests directory with the newly build image names.
+Change the image name given in the respective deployment YAML files for  all the projects in the manifests directory with the newly build image names.
 ```bash
 containers:
-    - name: microservice-webapp
-      image: registry.ng.bluemix.net/<namespace>/microservice-webapp
+    - name: microservice-schedule
+      image: registry.ng.bluemix.net/ishan/microservice-schedule
 ```
+Get the public ip of the node
+
+```bash
+$ kubectl get nodes
+NAME             STATUS    AGE
+169.47.241.106   Ready     23h
+```
+Set the value of `SOURCE_IP` env variable present in deploy-nginx.yaml file present in manifests folder with the public ip of the node.
 
 Deploy the microservice from the manifests directory with the command `kubectl create -f <filename>`.
 
