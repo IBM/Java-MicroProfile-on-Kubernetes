@@ -32,9 +32,6 @@ sleep 3m
 function run_tests() {
 bx cs workers sample
 $(bx cs cluster-config sample | grep -v "Downloading" | grep -v "OK" | grep -v "The")
-echo "Creating Deployments"
-git clone https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment.git
-cd kubernetes-container-service-java-microprofile-deployment
 
 echo "Remnoving deployments"
 kubectl delete -f manifests
@@ -42,8 +39,11 @@ kubectl delete -f manifests
 echo "Installing Helm"
 install_helm
 
+echo "Creating Deployments"
+git clone https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment.git
+
 echo "Deploying speaker"
-cd manifests
+cd kubernetes-container-service-java-microprofile-deployment/manifests
 kubectl create -f deploy_speaker.yaml
 sleep_func
 
