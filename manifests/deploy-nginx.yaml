@@ -1,15 +1,13 @@
-apiVersion: v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nginx-rc
+  name: nginx
 spec:
   replicas: 1
-  selector:
-    app: webapp
   template:
     metadata:
       labels:
-        app: webapp
+        app: nginx-server
     spec:
       containers:
       - name: hello
