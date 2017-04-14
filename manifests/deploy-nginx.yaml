@@ -1,13 +1,15 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: nginx
+  name: webapp-rc
 spec:
   replicas: 1
+  selector:
+    app: webapp
   template:
     metadata:
       labels:
-        app: nginx-server
+        app: webapp
     spec:
       containers:
       - name: hello
@@ -16,12 +18,13 @@ spec:
         - containerPort: 80
         env:
           - name: SOURCE_IP
+           #replace the value IP
             value: xx.xx.xx.xx
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-svc
+  name: webapp-svc
 spec:
   ports:
   - port: 80
@@ -30,5 +33,5 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: nginx
+    app: webapp
   type : NodePort
