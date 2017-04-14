@@ -1,12 +1,10 @@
 [![Build Status](https://travis-ci.org/IBM/kubernetes-container-service-java-microprofile-deployment.svg?branch=master)](https://travis-ci.org/IBM/kubernetes-container-service-java-microprofile-deployment)
 
-# Java microservices using Microprofile on Bluemix Container Service using Kubernetes
+# Java microservices using MicroProfile on Bluemix Container Service using Kubernetes
 
-This project demonstrates the deployment of a Java based microservices application using Microprofile and Microservice Builder on IBM Bluemix Container Service Kubernetes Cluster.
+This project demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on IBM Bluemix Container Service Kubernetes Cluster.
 
-[MicroProfile](http://microprofile.io) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. 
-
-[Microservice Builder](https://developer.ibm.com/microservice-builder/) builds on top of MicroProfile.io, and provides extension for containerized apps created using the tool to be deployed to Kubernetes. 
+[MicroProfile](http://microprofile.io) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. [Microservice Builder](https://developer.ibm.com/microservice-builder/) builds on top of MicroProfile.io, and provides extension for containerized apps created using the tool to be deployed to Kubernetes. 
 
 The Microservice Builder [sample application](https://github.com/WASdev/sample.microservicebuilder.docs) is a web application for managing a conference and is based on a number of discrete microservices. The front end is written in Angular; the backing microservices are in Java. All run on WebSphere Liberty, in Docker containers managed by Kubernetes.
 
