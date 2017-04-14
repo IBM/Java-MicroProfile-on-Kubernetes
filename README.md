@@ -14,13 +14,12 @@ With [IBM Bluemix Container Service](https://console.ng.bluemix.net/catalog/?tax
 
 ![Flow](images/microprofile_kube.png)
 
-1. User of Conference microservices application accesses the web-application to see the speaker list
-2. Web application microservice connects with speaker microservice to retrieve the speaker list
-3. User selects a speaker and clicks on name of the speaker to see the details
-4. The web application microservices connects with sessions microservice to retrieve session details for the speaker
-5. In addition, it also connects with schedule microservice to retrieve the schedule for speaker
-6. User also retrieves the vote section to see the ratings for the session.
-
+## Included Components
+- [Bluemix container service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
+- [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
+- [MicroProfile](http://microprofile.io)
+- [Microservice Builder](https://developer.ibm.com/microservice-builder/)
+- [Bluemix DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
 
 ## Prerequisite
 
