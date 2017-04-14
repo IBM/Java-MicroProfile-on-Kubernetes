@@ -11,10 +11,9 @@ spec:
     spec:
       containers:
       - name: microservice-vote
-        image: registry.ng.bluemix.net/<namespace>/microservice-vote
+        image: registry.ng.bluemix.net/ishan/microservice-vote
         ports:
           - containerPort: 9080
-        imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: keystore
           mountPath: /etc/wlp/config/keystore

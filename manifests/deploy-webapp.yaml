@@ -11,10 +11,9 @@ spec:
     spec:
       containers:
       - name: microservice-webapp
-        image: registry.ng.bluemix.net/<namespace>/web-application
+        image: registry.ng.bluemix.net/ishan/web-application
         ports:
           - containerPort: 9080
-        imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service

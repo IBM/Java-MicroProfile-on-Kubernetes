@@ -11,10 +11,9 @@ spec:
     spec:
       containers:
       - name: microservice-session
-        image: registry.ng.bluemix.net/<namespace>/microservice-session
+        image: registry.ng.bluemix.net/ishan/microservice-session
         ports:
           - containerPort: 9080
-        imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: keystore
           mountPath: /etc/wlp/config/keystore

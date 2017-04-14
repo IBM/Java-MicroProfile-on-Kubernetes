@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: microservice-schedule
-        image: registry.ng.bluemix.net/<namespace>/microservice-schedule
+        image: registry.ng.bluemix.net/ishan/microservice-schedule
 #       env:
 #       - name: EXTERNAL_IP_ADDR
 #         valueFrom:
@@ -20,7 +20,6 @@ spec:
 #             key: EXTERNAL_IP_ADDR
         ports:
           - containerPort: 9080
-        imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: keystore
           mountPath: /etc/wlp/config/keystore
