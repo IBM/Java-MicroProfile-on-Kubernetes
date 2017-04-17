@@ -34,6 +34,8 @@ If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Blu
 
 [![Create Toolchain](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment)
 
+Please follow the [Toolchain instructions](#toolchain-instructions) to complete your toolchain and pipeline.
+
 ## Steps
 
 1. [Install Docker CLI and Bluemix Container registry Plugin](#1-install-docker-cli-and-bluemix-container-registry-plugin)
@@ -226,7 +228,6 @@ When you click on vote link
 9. Click **View logs and history** of the Deploy stage to find the URL of the Java microservices using MicroProfile appplication.
 
 10. Congratulation, you can click the Java microservices using MicroProfile link to load the application in your browser. Note it takes a few seconds from the time the pods deploy until they are ready to serve requests.
-
 
 # License
 [Apache 2.0](LICENSE)

@@ -3,7 +3,7 @@
 function sleep_func() {
 #statements
 echo -e "sleeping for 3m"
-sleep 3m
+sleep 120s
 }
 
 function install_helm(){
@@ -11,7 +11,7 @@ function install_helm(){
   curl  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz > helm-v2.2.3-linux-amd64.tar.gz
   tar -xf helm-v2.2.3-linux-amd64.tar.gz
   chmod +x ./linux-amd64
-  sudo mv ./linux-amd64/helm /usr/local/bin/helm
+  mv ./linux-amd64/helm /usr/local/bin/helm
 
   # Install Tiller using Helm
   echo -e "Install Tiller"
@@ -52,7 +52,7 @@ echo -e "Installing Helm"
 install_helm
 
 echo "Deploying speaker"
-cd kubernetes-container-service-java-microprofile-deployment/manifests
+cd manifests
 kubectl create -f deploy-speaker.yaml
 sleep_func
 
