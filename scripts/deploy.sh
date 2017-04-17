@@ -8,10 +8,16 @@ sleep 120s
 
 function install_helm(){
   echo -e "Download Helm"
+
+
   curl  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz > helm-v2.2.3-linux-amd64.tar.gz
   tar -xf helm-v2.2.3-linux-amd64.tar.gz
   chmod +x ./linux-amd64
-  mv ./linux-amd64/helm /usr/local/bin/helm
+#  wget --quiet --output-document=/usr/local/bin/helm  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz
+
+  wget --quiet --output-document=/usr/local/bin/helm ./linux-amd64/helm
+  chmod +x /tmp/Bluemix_CLI/bin/*
+#  mv ./linux-amd64/helm /usr/local/bin/helm
 
   # Install Tiller using Helm
   echo -e "Install Tiller"
