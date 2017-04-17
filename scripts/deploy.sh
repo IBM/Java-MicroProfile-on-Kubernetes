@@ -81,4 +81,4 @@ sleep_func
 PORT=$(kubectl get service nginx-svc | grep nginx-svc | sed 's/.*://g' | sed 's/\/.*//g')
 
 echo ""
-echo "View the wordpress at http://$IP_ADDR:$PORT"
+echo "View the Java microservices using MicroProfile at http://$IP_ADDR:$PORT"
