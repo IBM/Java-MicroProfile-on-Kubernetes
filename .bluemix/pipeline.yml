@@ -43,8 +43,8 @@ stages:
     script: |
       #!/bin/bash
       . ./scripts/install_bx.sh
-      bash ./scripts/bx_login.sh
-      bash ./scripts/deploy.sh
+      bash scripts/bx_login.sh
+      bash scripts/deploy.sh
 hooks:
 - enabled: true
   label: null
