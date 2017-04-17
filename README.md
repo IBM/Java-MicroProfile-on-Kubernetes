@@ -31,7 +31,7 @@ If you have not setup the Kubernetes cluster, please follow the [Creating a Kube
 ## Steps
 
 1. [Install Docker CLI and Bluemix Container registry Plugin](#1-install-docker-cli-and-bluemix-container-registry-plugin)
-2. [Get and build the application code](#2-get-and-build-the-applicagtion-code)
+2. [Get and build the application code](#2-get-and-build-the-application-code)
 3. [Build application containers](#3-build-application-containers)
 4. [Create Services and Deployments](#4-create-services-and-deployments)
 
@@ -132,11 +132,11 @@ docker push registry.ng.bluemix.net/<namespace>/nginx-server
 
 # 4. Create Services and Deployments
 
-Change the image name given in the respective deployment YAML files for  all the projects in the manifests directory with the newly build image names. 
+Change the image name given in the respective deployment YAML files for  all the projects in the manifests directory with the newly build image names.
 ```bash
 containers:
-    - name: microservice-schedule
-      image: registry.ng.bluemix.net/<namespace>/microservice-schedule
+    - name: microservice-webapp
+      image: docker.io/ishangulhane/microservice-webapp
 ```
 Get the public ip of the node
 

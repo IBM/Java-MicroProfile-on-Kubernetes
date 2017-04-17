@@ -62,24 +62,19 @@ sleep_func
 echo "Deploying webapp"
 kubectl create -f deploy-webapp.yaml
 sleep_func
-change_nginx
 echo "Deploying nginx"
+IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
+echo $IP_ADDRESS
+sed -i '' 's/xx.xx.xx.xx/'$IP_ADDRESS'/g' deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
 sleep_func
 
 }
 
-function change_nginx() {
-  #statements
-  IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
-  echo $IP_ADDRESS
-  sed -i '' 's/xx.xx.xx.xx/'$IP_ADDRESS'/g' deploy-nginx.yaml
-}
-
 function install_helm(){
   echo "Download Helm"
   curl  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz > helm-v2.2.3-linux-amd64.tar.gz
-  tar -xf helm-v2.3.0-linux-amd64.tar.gz
+  tar -xf helm-v2.2.3-linux-amd64.tar.gz
   chmod +x ./linux-amd64
   sudo mv ./linux-amd64/helm /usr/local/bin/helm
 

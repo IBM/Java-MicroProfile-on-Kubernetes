@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: microservice-vote
-        image: registry.ng.bluemix.net/ishan/microservice-vote
+        image: docker.io/ishangulhane/microservice-vote
         ports:
           - containerPort: 9080
         volumeMounts:

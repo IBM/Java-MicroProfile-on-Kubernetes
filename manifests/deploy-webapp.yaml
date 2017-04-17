@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: microservice-webapp
-        image: registry.ng.bluemix.net/ishan/microservice-webapp
+        image: docker.io/ishangulhane/microservice-webapp
         ports:
           - containerPort: 9080
 ---

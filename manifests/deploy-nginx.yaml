@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: hello
-        image: registry.ng.bluemix.net/ishan/nginx-server
+        image: docker.io/ishangulhane/nginx-server
         ports:
         - containerPort: 80
         env:

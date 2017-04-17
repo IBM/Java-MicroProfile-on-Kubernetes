@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: microservice-schedule
-        image: registry.ng.bluemix.net/ishan/microservice-schedule
+        image: docker.io/ishangulhane/microservice-schedule
 #       env:
 #       - name: EXTERNAL_IP_ADDR
 #         valueFrom:

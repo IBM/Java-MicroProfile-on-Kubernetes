@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: microservice-speaker
-        image: registry.ng.bluemix.net/ishan/microservice-speaker
+        image: docker.io/ishangulhane/microservice-speaker
         ports:
           - containerPort: 9080
         volumeMounts:
