@@ -36,8 +36,8 @@ $(bx cs cluster-config sample | grep -v "Downloading" | grep -v "OK" | grep -v "
 echo "Creating Deployments"
 git clone https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment.git
 
-echo "Remnoving deployments"
-kubectl delete -f manifests
+echo "Removing deployments"
+kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 
 echo "Installing Helm"
 install_helm
@@ -64,8 +64,7 @@ kubectl create -f deploy-webapp.yaml
 sleep_func
 echo "Deploying nginx"
 IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
-echo $IP_ADDRESS
-sed -i 's/xx.xx.xx.xx/'$IP_ADDRESS'/g' deploy-nginx.yaml
+sed -i "s/xx.xx.xx.xx/$IP_ADDRESS/g" deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
 sleep_func
 
@@ -77,11 +76,6 @@ function install_helm(){
   tar -xf helm-v2.2.3-linux-amd64.tar.gz
   chmod +x ./linux-amd64
   sudo mv ./linux-amd64/helm /usr/local/bin/helm
-
-  # Download helm
-  #curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
-  #chmod 700 get_helm.sh
-  #./get_helm.sh
 
   # Install Tiller using Helm
   echo "Install Tiller"
@@ -95,13 +89,11 @@ function install_helm(){
 }
 
 function exit_tests() {
-  cd ..
-  kubectl delete -f manifests
+  kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 }
 
 
 install_bluemix_cli
 bluemix_auth
-#cluster_setup
 run_tests
 exit_tests

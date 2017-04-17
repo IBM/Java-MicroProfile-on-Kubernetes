@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: microservice-webapp-sample
+  labels:
+    app: microprofile-app
 spec:
   replicas: 1
   template:
@@ -11,6 +13,7 @@ spec:
     spec:
       containers:
       - name: microservice-webapp
+        #change the image name
         image: docker.io/ishangulhane/microservice-webapp
         ports:
           - containerPort: 9080
@@ -19,6 +22,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webapp-service
+  labels:
+    app: microprofile-app
   namespace: default
 spec:
   ports:

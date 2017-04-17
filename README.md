@@ -28,6 +28,12 @@ If you have not setup the Kubernetes cluster, please follow the [Creating a Kube
 * Install [Maven](https://maven.apache.org/download.cgi) and a Java 8 JDK.
 * Install a [Docker](https://docs.docker.com/engine/installation/) engine.
 
+
+## Deploy to Bluemix
+If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
+
+[![Create Toolchain](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment)
+
 ## Steps
 
 1. [Install Docker CLI and Bluemix Container registry Plugin](#1-install-docker-cli-and-bluemix-container-registry-plugin)
@@ -133,11 +139,7 @@ docker push registry.ng.bluemix.net/<namespace>/nginx-server
 # 4. Create Services and Deployments
 
 Change the image name given in the respective deployment YAML files for  all the projects in the manifests directory with the newly build image names.
-```bash
-containers:
-    - name: microservice-webapp
-      image: docker.io/ishangulhane/microservice-webapp
-```
+
 Get the public ip of the node
 
 ```bash

@@ -1,6 +1,6 @@
 ---
-name: "Deploy Kubernetes WordPress sample to Bluemix"
-description: "Toolchain to deploy Kubernetes WordPress sample to Bluemix"
+name: "Deploy Java microservices using MicroProfile sample to Bluemix"
+description: "Toolchain to deploy Java microservices using MicroProfile on Bluemix Container Service Kubernetes Cluster"
 version: 0.1
 image: data:image/svg+xml;base64,$file(toolchain.svg,base64)
 icon: data:image/svg+xml;base64,$file(icon.svg,base64)

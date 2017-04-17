@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: microservice-schedule-sample
+  labels:
+    app: microprofile-app
 spec:
   replicas: 1
   template:
@@ -11,13 +13,8 @@ spec:
     spec:
       containers:
       - name: microservice-schedule
+        #change the image name
         image: docker.io/ishangulhane/microservice-schedule
-#       env:
-#       - name: EXTERNAL_IP_ADDR
-#         valueFrom:
-#           configMapKeyRef:
-#             name: ipaddr-config
-#             key: EXTERNAL_IP_ADDR
         ports:
           - containerPort: 9080
         volumeMounts:
@@ -47,6 +44,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: schedule-service
+  labels:
+    app: microprofile-app
   namespace: default
 spec:
   ports:

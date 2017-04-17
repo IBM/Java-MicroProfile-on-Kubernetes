@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: microservice-speaker-sample
+  labels:
+    app: microprofile-app
 spec:
   replicas: 1
   template:
@@ -11,6 +13,7 @@ spec:
     spec:
       containers:
       - name: microservice-speaker
+        #change the image name
         image: docker.io/ishangulhane/microservice-speaker
         ports:
           - containerPort: 9080
@@ -41,6 +44,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: speaker-service
+  labels:
+    app: microprofile-app
   namespace: default
 spec:
   ports:

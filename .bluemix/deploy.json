@@ -18,7 +18,7 @@
             "type": "string"
         },
        "prod-app-name": {
-            "description": "The name of your WordPress app",
+            "description": "The name of your Java microservices using MicroProfile app",
             "type": "string"
         }
     },

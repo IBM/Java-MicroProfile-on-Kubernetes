@@ -1,7 +1,9 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: webapp-rc
+  name: nginx-rc
+  labels:
+    app: microprofile-app
 spec:
   replicas: 1
   selector:
@@ -12,19 +14,22 @@ spec:
         app: webapp
     spec:
       containers:
-      - name: hello
+      - name: nginx-image
+        #change the image name
         image: docker.io/ishangulhane/nginx-server
         ports:
         - containerPort: 80
         env:
           - name: SOURCE_IP
-           #replace the value IP
+           #change the value of IP with Kubernetes EXTERNAL-IP
             value: xx.xx.xx.xx
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-svc
+  name: nginx-svc
+  labels:
+    app: microprofile-app
 spec:
   ports:
   - port: 80
@@ -33,5 +38,5 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: webapp
+    app: microprofile-app
   type : NodePort
