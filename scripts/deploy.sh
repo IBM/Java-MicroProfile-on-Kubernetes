@@ -8,19 +8,19 @@ sleep 120s
 
 function install_helm(){
 
-  wget --quiet --output-document=/usr/local/bin/helm-v2.2.3-linux-amd64.tar.gz https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz && tar -xf helm-v2.2.3-linux-amd64.tar.gz
-  mv /usr/local/bin/linux-amd64/helm /usr/local/bin/
-  chmod +x /usr/local/bin/helm
+  curl  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz > helm-v2.2.3-linux-amd64.tar.gz
+  tar -xf helm-v2.2.3-linux-amd64.tar.gz
+  chmod +x ./linux-amd64
 
   # Install Tiller using Helm
   echo "Install Tiller"
-  helm init
+  linux-amd64/helm init
 
   #Add the repository
-  helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
+  linux-amd64/helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
 
   #Install Microservice Builder Fabric using Helm
-  helm install mb/fabric
+  linux-amd64/helm install mb/fabric
 }
 
 
