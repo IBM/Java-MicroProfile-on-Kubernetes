@@ -65,7 +65,7 @@ sleep_func
 echo "Deploying nginx"
 IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
 echo $IP_ADDRESS
-sed -i '' 's/xx.xx.xx.xx/'$IP_ADDRESS'/g' deploy-nginx.yaml
+sed -i 's/xx.xx.xx.xx/'$IP_ADDRESS'/g' deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
 sleep_func
 
