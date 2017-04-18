@@ -6,23 +6,25 @@ echo -e "sleeping for 1m"
 sleep 60s
 }
 
-function install_helm(){
-
+function download_helm() {
+  #statements
   curl  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz > helm-v2.2.3-linux-amd64.tar.gz
   tar -xf helm-v2.2.3-linux-amd64.tar.gz
   chmod +x ./linux-amd64
+}
 
+function install_helm(){
   # Install Tiller using Helm
   echo "Install Tiller"
   linux-amd64/helm init
 
   #Add the repository
   linux-amd64/helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
-
+  sleep 60s
   #Install Microservice Builder Fabric using Helm
   linux-amd64/helm install mb/fabric
-  echo -e "sleeping for 3m"
-  sleep 3m
+  echo -e "sleeping for 2m"
+  sleep 5m
 }
 
 
@@ -50,33 +52,34 @@ if [ ${#kuber} -ne 0 ]; then
 fi
 
 echo -e "Installing Helm"
+download_helm
 install_helm
-
 echo "Deploying speaker"
 cd manifests
 kubectl create -f deploy-speaker.yaml
-sleep_func
+#sleep_func
 
 echo "Deploying schedule"
 kubectl create -f deploy-schedule.yaml
-sleep_func
+#sleep_func
 
 echo "Deploying vote"
 kubectl create -f deploy-vote.yaml
-sleep_func
+#sleep_func
 
 echo "Deploying session"
 kubectl create -f deploy-session.yaml
-sleep_func
+#sleep_func
 
 echo "Deploying webapp"
 kubectl create -f deploy-webapp.yaml
-sleep_func
+#sleep_func
 echo "Deploying nginx"
 
 sed -i "s/xx.xx.xx.xx/$IP_ADDR/g" deploy-nginx.yaml
+cat deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
-sleep_func
+#sleep_func
 
 
 PORT=$(kubectl get service nginx-svc | grep nginx-svc | sed 's/.*://g' | sed 's/\/.*//g')
