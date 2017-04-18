@@ -20,7 +20,7 @@ function install_helm(){
 
   #Add the repository
   linux-amd64/helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
-  sleep 60s
+  sleep 120s
   #Install Microservice Builder Fabric using Helm
   linux-amd64/helm install mb/fabric
   echo -e "sleeping for 2m"
