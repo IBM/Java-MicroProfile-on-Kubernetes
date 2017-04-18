@@ -24,7 +24,7 @@ function install_helm(){
   #Install Microservice Builder Fabric using Helm
   linux-amd64/helm install mb/fabric
   echo -e "sleeping for 2m"
-  sleep 5m
+  #sleep 5m
 }
 
 
@@ -51,6 +51,7 @@ if [ ${#kuber} -ne 0 ]; then
 	sleep 120s
 fi
 
+kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 echo -e "Installing Helm"
 download_helm
 install_helm
