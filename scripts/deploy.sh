@@ -24,7 +24,7 @@ function install_helm(){
   #Install Microservice Builder Fabric using Helm
   linux-amd64/helm install mb/fabric
   echo -e "sleeping for 2m"
-  #sleep 5m
+  sleep 5m
 }
 
 
@@ -51,7 +51,6 @@ if [ ${#kuber} -ne 0 ]; then
 	sleep 120s
 fi
 
-kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 echo -e "Installing Helm"
 download_helm
 install_helm
@@ -78,10 +77,9 @@ kubectl create -f deploy-webapp.yaml
 echo "Deploying nginx"
 
 sed -i "s/xx.xx.xx.xx/$IP_ADDR/g" deploy-nginx.yaml
-cat deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
 #sleep_func
-
+sleep 5m
 
 PORT=$(kubectl get service nginx-svc | grep nginx-svc | sed 's/.*://g' | sed 's/\/.*//g')
 
