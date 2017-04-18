@@ -45,7 +45,6 @@ fi
 echo -e "Installing Helm"
 download_helm
 install_helm
-#sleep 3m
 install_helm
 echo "Deploying speaker"
 cd manifests
@@ -66,7 +65,8 @@ kubectl create -f deploy-webapp.yaml
 echo "Deploying nginx"
 sed -i "s/xx.xx.xx.xx/$IP_ADDR/g" deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
-
+echo -e "Sleeping for 3m"
+sleep 3m
 PORT=$(kubectl get service nginx-svc | grep nginx-svc | sed 's/.*://g' | sed 's/\/.*//g')
 
 echo ""
