@@ -1,11 +1,5 @@
 #!/bin/bash
 
-function sleep_func() {
-#statements
-echo -e "sleeping for 1m"
-sleep 60s
-}
-
 function download_helm() {
   #statements
   curl  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz > helm-v2.2.3-linux-amd64.tar.gz
@@ -20,7 +14,7 @@ function install_helm(){
   #Add the repository
   linux-amd64/helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
   #Install Microservice Builder Fabric using Helm
-  sleep 60s
+  sleep 30s
   linux-amd64/helm install mb/fabric
 }
 
@@ -51,34 +45,27 @@ fi
 echo -e "Installing Helm"
 download_helm
 install_helm
-sleep 3m
+#sleep 3m
 install_helm
 echo "Deploying speaker"
 cd manifests
 kubectl create -f deploy-speaker.yaml
-#sleep_func
 
 echo "Deploying schedule"
 kubectl create -f deploy-schedule.yaml
-#sleep_func
 
 echo "Deploying vote"
 kubectl create -f deploy-vote.yaml
-#sleep_func
 
 echo "Deploying session"
 kubectl create -f deploy-session.yaml
-#sleep_func
 
 echo "Deploying webapp"
 kubectl create -f deploy-webapp.yaml
-#sleep_func
-echo "Deploying nginx"
 
+echo "Deploying nginx"
 sed -i "s/xx.xx.xx.xx/$IP_ADDR/g" deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
-#sleep_func
-sleep 5m
 
 PORT=$(kubectl get service nginx-svc | grep nginx-svc | sed 's/.*://g' | sed 's/\/.*//g')
 
