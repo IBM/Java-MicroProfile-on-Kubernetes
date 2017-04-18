@@ -11,20 +11,17 @@ function download_helm() {
   curl  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz > helm-v2.2.3-linux-amd64.tar.gz
   tar -xf helm-v2.2.3-linux-amd64.tar.gz
   chmod +x ./linux-amd64
-}
-
-function install_helm(){
   # Install Tiller using Helm
   echo "Install Tiller"
   linux-amd64/helm init
+}
 
+function install_helm(){
   #Add the repository
   linux-amd64/helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
-  sleep 120s
   #Install Microservice Builder Fabric using Helm
+  sleep 60s
   linux-amd64/helm install mb/fabric
-  echo -e "sleeping for 2m"
-  sleep 5m
 }
 
 
@@ -53,6 +50,8 @@ fi
 
 echo -e "Installing Helm"
 download_helm
+install_helm
+sleep 3m
 install_helm
 echo "Deploying speaker"
 cd manifests
