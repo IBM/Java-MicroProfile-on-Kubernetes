@@ -2,8 +2,8 @@
 
 function sleep_func() {
 #statements
-echo -e "sleeping for 3m"
-sleep 120s
+echo -e "sleeping for 1m"
+sleep 60s
 }
 
 function install_helm(){
@@ -21,6 +21,8 @@ function install_helm(){
 
   #Install Microservice Builder Fabric using Helm
   linux-amd64/helm install mb/fabric
+  echo -e "sleeping for 3m"
+  sleep 3m
 }
 
 
