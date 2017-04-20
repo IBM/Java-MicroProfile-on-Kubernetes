@@ -1,3 +1,123 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cloudant-secret-generator-deploy
+spec:
+  template:
+    metadata:
+      name: cloudant-secret-generator-deploy
+    spec:
+      containers:
+      - name: cloudant-secret-generator-deploy
+        image: ibmcom/kubernetes:v1.5.2
+        command: ["/bin/sh","-c"]
+        args: ["/kubectl get secret cloudant-secret || /kubectl create secret generic cloudant-secret --from-literal=dbUsername=admin --from-literal=dbPassword=`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"]
+        resources:
+          limits:
+            cpu: 100m
+      restartPolicy: Never
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: cloudant-pv
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 4Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/var/cloudant"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: cloudant-pv-claim
+  labels:
+    type: local
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudant-service
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      nodePort: 31111
+  selector:
+    name: cloudant-deployment
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vote-service
+  labels:
+    app: microprofile-app
+  namespace: default
+spec:
+  ports:
+    - port: 9080
+      targetPort: 9080
+      nodePort: 30055
+  selector:
+    name: vote-deployment
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cloudant-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: cloudant-deployment
+    spec:
+      containers:
+      - name: cloudant-db
+        image: ibmcom/cloudant-developer
+        env:
+        - name: dbUsername
+          valueFrom:
+            secretKeyRef:
+              name: cloudant-secret
+              key: dbUsername
+        - name: dbPassword
+          valueFrom:
+            secretKeyRef:
+              name: cloudant-secret
+              key: dbPassword
+        command: ["/bin/sh","-c"]
+        args: ["if [ ! -z $dbPassword ]; then sed -i 's/^admin.*/admin = '$dbPassword'/g' /opt/cloudant/etc/local.ini && sed -i 's/^cloudant.*/cloudant = '$dbPassword'/g' /opt/cloudant/etc/local.ini && if [ ! -a /srv/cloudant ]; then sed -i 's/172.17.0.2/127.0.0.1/g' /etc/haproxy/haproxy.cfg && cast license --silent && cast database init -v -y -p $dbPassword ; fi; exec /usr/sbin/init; fi;"]
+        securityContext:
+          privileged: true
+        ports:
+          - containerPort: 80
+        volumeMounts:
+        - name: cloudant-pv
+          mountPath: /srv
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 15
+          timeoutSeconds: 2
+      volumes:
+        - name: cloudant-pv
+          persistentVolumeClaim:
+            claimName: cloudant-pv-claim
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -13,8 +133,25 @@ spec:
     spec:
       containers:
       - name: microservice-vote
-        #change the image name
+        #change the image name 
         image: docker.io/ishangulhane/microservice-vote
+        env:
+        - name: dbUsername
+          valueFrom:
+            secretKeyRef:
+              name: cloudant-secret
+              key: dbUsername
+        - name: dbPassword
+          valueFrom:
+            secretKeyRef:
+              name: cloudant-secret
+              key: dbPassword
+        - name: dbHost
+          value: $CLOUDANT_SERVICE_SERVICE_HOST
+        - name: dbPort
+          value: $CLOUDANT_SERVICE_SERVICE_PORT
+        command: ["/bin/sh","-c"]
+        args: ["if [ ! -z $dbPassword ]; then export dbUrl=http://$CLOUDANT_SERVICE_SERVICE_HOST:$CLOUDANT_SERVICE_SERVICE_PORT; exec /opt/ibm/wlp/bin/server run defaultServer; fi;"]
         ports:
           - containerPort: 9080
         volumeMounts:
@@ -39,19 +176,3 @@ spec:
               path: defaults/keystore.xml
             - key: logging.xml
               path: defaults/logging.xml
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: vote-service
-  labels:
-    app: microprofile-app
-  namespace: default
-spec:
-  ports:
-    - port: 9080
-      targetPort: 9080
-      nodePort: 30055
-  selector:
-    name: vote-deployment
-  type: NodePort

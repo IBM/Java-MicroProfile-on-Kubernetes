@@ -34,7 +34,7 @@ bx cs workers sample
 $(bx cs cluster-config sample | grep -v "Downloading" | grep -v "OK" | grep -v "The")
 
 echo "Creating Deployments"
-git clone https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment.git
+git clone https://github.com/IBM/java-microprofile-on-kubernetes.git
 
 echo "Removing deployments"
 kubectl delete svc,rc,deployments,pods -l app=microprofile-app
@@ -43,7 +43,7 @@ echo "Installing Helm"
 install_helm
 
 echo "Deploying speaker"
-cd kubernetes-container-service-java-microprofile-deployment/manifests
+cd java-microprofile-on-kubernetes/manifests
 kubectl create -f deploy-speaker.yaml
 sleep_func
 

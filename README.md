@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/IBM/kubernetes-container-service-java-microprofile-deployment.svg?branch=master)](https://travis-ci.org/IBM/kubernetes-container-service-java-microprofile-deployment)
+[![Build Status](https://travis-ci.org/IBM/java-microprofile-on-kubernetes.svg?branch=master)](https://travis-ci.org/IBM/java-microprofile-on-kubernetes)
+
 
 # Java microservices using MicroProfile on Bluemix Container Service Kubernetes Cluster
 
