@@ -33,7 +33,7 @@ If you have not setup the Kubernetes cluster, please follow the [Creating a Kube
 ## Deploy to Bluemix
 If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the Java microservices using MicroProfile sample, else jump to [Steps](#steps)
 
-[![Create Toolchain](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/kubernetes-container-service-java-microprofile-deployment)
+[![Create Toolchain](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/java-microprofile-on-kubernetes)
 
 Please follow the [Toolchain instructions](https://github.com/IBM/container-journey-template/blob/master/Toolchain_Instructions.md) to complete your toolchain and pipeline.
 
@@ -82,10 +82,17 @@ bx cr images
 
 * `git clone` the following projects:
    1. [sample.microservicebuilder.web-app](https://github.com/WASdev/sample.microservicebuilder.web-app)
-   1. [sample.microservicebuilder.vote](https://github.com/WASdev/sample.microservicebuilder.vote)
    1. [sample.microservicebuilder.schedule](https://github.com/WASdev/sample.microservicebuilder.schedule)
    1. [sample.microservicebuilder.speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
    1. [sample.microservicebuilder.session](https://github.com/WASdev/sample.microservicebuilder.session)
+   1. [sample.microservicebuilder.vote](https://github.com/WASdev/sample.microservicebuilder.vote)
+   > **Note:** To clone the vote use the following commands :
+   
+   >   git clone https://github.com/WASdev/sample.microservicebuilder.vote.git
+
+   >   cd sample.microservicebuilder.vote/
+
+   >   git checkout 4bd11a9bcdc7f445d7596141a034104938e08b22
 
 * `mvn clean package` in each ../sample.microservicebuilder.* projects
 

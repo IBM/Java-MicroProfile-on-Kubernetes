@@ -20,7 +20,7 @@ function install_helm(){
 
 
 echo "Create Java microservices using MicroProfile"
-IP_ADDR=$(bx cs workers $CLUSTER_NAME | grep deployed | awk '{ print $2 }')
+IP_ADDR=$(bx cs workers $CLUSTER_NAME | grep Ready | awk '{ print $2 }')
 if [ -z $IP_ADDR ]; then
   echo "$CLUSTER_NAME not created or workers not ready"
   exit 1
