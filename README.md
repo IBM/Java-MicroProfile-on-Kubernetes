@@ -86,13 +86,14 @@ bx cr images
    1. [sample.microservicebuilder.speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
    1. [sample.microservicebuilder.session](https://github.com/WASdev/sample.microservicebuilder.session)
    1. [sample.microservicebuilder.vote](https://github.com/WASdev/sample.microservicebuilder.vote)
-   > **Note:** To clone the vote use the following commands :
+
+   To clone the vote microservice use the following commands :
    
-   >   git clone https://github.com/WASdev/sample.microservicebuilder.vote.git
-
-   >   cd sample.microservicebuilder.vote/
-
-   >   git checkout 4bd11a9bcdc7f445d7596141a034104938e08b22
+   ```bash
+      git clone https://github.com/WASdev/sample.microservicebuilder.vote.git
+      cd sample.microservicebuilder.vote/
+      git checkout 4bd11a9bcdc7f445d7596141a034104938e08b22
+  ```
 
 * `mvn clean package` in each ../sample.microservicebuilder.* projects
 
