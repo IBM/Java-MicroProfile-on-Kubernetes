@@ -76,28 +76,28 @@ bx cr images
 
 # 2. Get and build the application code
 
-* Install the [Microservice Builder fabric](https://microservicebuilder.mybluemix.net/docs/installing_fabric_task.html) - these are various services that run on top of Kubernetes.
+* Install the [Microservice Builder fabric](https://microservicebuilder.mybluemix.net/docs/installing_fabric_task.html) - which provides additional services that run on top of Kubernetes.
 
 > **Note:** For the following steps, you can get the code and build the package by running the get_code.sh script present in scripts directory.
 
 * `git clone` the following projects:
-   1. [Web-App](https://github.com/WASdev/sample.microservicebuilder.web-app)
+   * [Web-App](https://github.com/WASdev/sample.microservicebuilder.web-app)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.web-app.git
   ```
-   2. [Schedule](https://github.com/WASdev/sample.microservicebuilder.schedule)
+   * [Schedule](https://github.com/WASdev/sample.microservicebuilder.schedule)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.schedule.git
   ```
-   3. [Speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
+   * [Speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.speaker.git
   ```
-   4. [Session](https://github.com/WASdev/sample.microservicebuilder.session)
+   * [Session](https://github.com/WASdev/sample.microservicebuilder.session)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.session.git
   ```
-   5. [Vote](https://github.com/WASdev/sample.microservicebuilder.vote)
+   * [Vote](https://github.com/WASdev/sample.microservicebuilder.vote)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.vote.git
       cd sample.microservicebuilder.vote/
