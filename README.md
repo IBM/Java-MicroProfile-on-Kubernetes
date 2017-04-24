@@ -85,19 +85,19 @@ bx cr images
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.web-app.git
   ```
-   1. [Schedule](https://github.com/WASdev/sample.microservicebuilder.schedule)
+   2. [Schedule](https://github.com/WASdev/sample.microservicebuilder.schedule)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.schedule.git
   ```
-   1. [Speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
+   3. [Speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.speaker.git
   ```
-   1. [Session](https://github.com/WASdev/sample.microservicebuilder.session)
+   4. [Session](https://github.com/WASdev/sample.microservicebuilder.session)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.session.git
   ```
-   1. [Vote](https://github.com/WASdev/sample.microservicebuilder.vote)
+   5. [Vote](https://github.com/WASdev/sample.microservicebuilder.vote)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.vote.git
       cd sample.microservicebuilder.vote/
