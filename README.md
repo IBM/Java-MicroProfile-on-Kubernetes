@@ -81,14 +81,23 @@ bx cr images
 > **Note:** For the following steps, you can get the code and build the package by running the get_code.sh script present in scripts directory.
 
 * `git clone` the following projects:
-   1. [sample.microservicebuilder.web-app](https://github.com/WASdev/sample.microservicebuilder.web-app)
-   1. [sample.microservicebuilder.schedule](https://github.com/WASdev/sample.microservicebuilder.schedule)
-   1. [sample.microservicebuilder.speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
-   1. [sample.microservicebuilder.session](https://github.com/WASdev/sample.microservicebuilder.session)
-   1. [sample.microservicebuilder.vote](https://github.com/WASdev/sample.microservicebuilder.vote)
-
-   To clone the vote microservice use the following commands :
-   
+   1. [Web-App](https://github.com/WASdev/sample.microservicebuilder.web-app)
+   ```bash
+      git clone https://github.com/WASdev/sample.microservicebuilder.web-app.git
+  ```
+   1. [Schedule](https://github.com/WASdev/sample.microservicebuilder.schedule)
+   ```bash
+      git clone https://github.com/WASdev/sample.microservicebuilder.schedule.git
+  ```
+   1. [Speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
+   ```bash
+      git clone https://github.com/WASdev/sample.microservicebuilder.speaker.git
+  ```
+   1. [Session](https://github.com/WASdev/sample.microservicebuilder.session)
+   ```bash
+      git clone https://github.com/WASdev/sample.microservicebuilder.session.git
+  ```
+   1. [Vote](https://github.com/WASdev/sample.microservicebuilder.vote)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.vote.git
       cd sample.microservicebuilder.vote/
