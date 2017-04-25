@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/IBM/java-microprofile-on-kubernetes.svg?branch=master)](https://travis-ci.org/IBM/java-microprofile-on-kubernetes)
 
 
-#  Deploy MicroProfile-based Java microservices on Kubernetes 
+#  Deploy MicroProfile-based Java microservices on Kubernetes Cluster
 
 This code demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on IBM Bluemix Container Service Kubernetes Cluster.
 
