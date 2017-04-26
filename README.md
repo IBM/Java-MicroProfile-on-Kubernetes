@@ -3,15 +3,13 @@
 
 #  Deploy MicroProfile-based Java microservices on Kubernetes Cluster
 
-This code demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on IBM Bluemix Container Service Kubernetes Cluster.
+This code demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on Kubernetes Cluster.
 
 [MicroProfile](http://microprofile.io) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. [Microservice Builder](https://developer.ibm.com/microservice-builder/) builds on top of MicroProfile.io, and provides extension for containerized apps created using the tool to be deployed to Kubernetes.
 
 The Microservice Builder [sample application](https://github.com/WASdev/sample.microservicebuilder.docs) is a web application for managing a conference and is based on a number of discrete microservices. The front end is written in Angular; the backing microservices are in Java. All run on WebSphere Liberty, in Docker containers managed by Kubernetes. Minikube instructions are present in this [repository](https://github.com/WASdev/sample.microservicebuilder.docs).
 
-With [IBM Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers), you can deploy and manage your own Kubernetes cluster in the cloud that lets you automate the deployment, operation, scaling, and monitoring of containerized apps over a cluster of independent compute hosts called worker nodes.  
-
-![Flow](images/microprofile_kube.png)
+![Flow](images/microprofile_kube_code.png)
 
 ## Included Components
 - [Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
