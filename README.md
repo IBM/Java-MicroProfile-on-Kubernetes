@@ -33,7 +33,7 @@ If you have not setup the Kubernetes cluster, please follow the [Creating a Kube
 ## Deploy to Bluemix
 If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the Java microservices using MicroProfile sample, else jump to [Steps](#steps)
 
-[![Create Toolchain](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/java-microprofile-on-kubernetes)
+[![Create Toolchain](https://github.com/IBM/container-journey-template/blob/master/images/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/java-microprofile-on-kubernetes)
 
 Please follow the [Toolchain instructions](https://github.com/IBM/container-journey-template/blob/master/Toolchain_Instructions.md) to complete your toolchain and pipeline.
 
