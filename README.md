@@ -206,6 +206,18 @@ When you click on vote link
 
 ![Vote Info](images/ui4.png)
 
+## Troubleshooting
+
+* If your microservice instance is not running properly, you may check the logs using
+	* `kubectl logs <your-pod-name>`
+* To delete a microservice
+	* `kubectl delete -f manifests/<microservice-yaml-file>`
+* To delete everything
+	* `kubectl delete -f manifests`
+
+
+## References
+* This java microservices example is based on Kubernete's [Microprofile Showcase Application](https://github.com/WASdev/sample.microservicebuilder.docs).
 
 # License
 [Apache 2.0](LICENSE)

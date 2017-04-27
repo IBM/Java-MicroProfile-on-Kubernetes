@@ -41,7 +41,7 @@ spec:
               path: defaults/logging.xml
 ---
 apiVersion: v1
-kind: Service
+kind:  Service
 metadata:
   name: speaker-service
   labels:
