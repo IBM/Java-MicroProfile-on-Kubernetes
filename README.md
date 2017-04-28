@@ -21,10 +21,8 @@ The Microservice Builder [sample application](https://github.com/WASdev/sample.m
 ## Prerequisite
 
 * Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, or with [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template) to deploy in cloud. 
-
-For deploying on Minikube follow the instructions [here](https://github.com/WASdev/sample.microservicebuilder.docs/blob/master/dev_test_local_minikube.md)
-
-The code in this repository is regularly tested against [Kubernetes Cluster from Bluemix Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
+*For deploying on Minikube follow the instructions [here](https://github.com/WASdev/sample.microservicebuilder.docs/blob/master/dev_test_local_minikube.md)
+*The code in this particular repository is regularly tested against [Kubernetes Cluster from Bluemix Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
 * Install a Git client to obtain the sample code.
 * Install [Maven](https://maven.apache.org/download.cgi) and a Java 8 JDK.
 * Install a [Docker](https://docs.docker.com/engine/installation/) engine.
