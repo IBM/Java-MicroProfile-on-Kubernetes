@@ -13,7 +13,7 @@ sample-repo:
   service_id: githubpublic
   parameters:
     repo_name: "{{name}}"
-    repo_url: https://github.com/IBM/java-microprofile-on-kubernetes
+    repo_url: https://github.com/IBM/Java-MicroProfile-on-Kubernetes
     type: fork
     has_issues: false
 
