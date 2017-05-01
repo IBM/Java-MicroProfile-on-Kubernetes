@@ -12,11 +12,11 @@ The Microservice Builder [sample application](https://github.com/WASdev/sample.m
 ![Flow](images/microprofile_kube_code.png)
 
 ## Included Components
-- [Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
 - [Kubernetes Cluster](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
 - [MicroProfile](http://microprofile.io)
 - [Microservice Builder](https://developer.ibm.com/microservice-builder/)
 - [Bluemix DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
+- [Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
 
 ## Prerequisite
 
