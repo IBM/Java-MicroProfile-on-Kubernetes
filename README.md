@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/IBM/java-microprofile-on-kubernetes.svg?branch=master)](https://travis-ci.org/IBM/java-microprofile-on-kubernetes)
 
 
-#  Deploy MicroProfile-based Java microservices on Kubernetes Cluster
+#  Deploy MicroProfile based Java microservices on Kubernetes Cluster
 
 This code demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on Kubernetes Cluster.
 
@@ -27,8 +27,8 @@ The Microservice Builder [sample application](https://github.com/WASdev/sample.m
 * Install a [Docker](https://docs.docker.com/engine/installation/) engine.
 
 
-## Deploy to Bluemix
-If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the Java microservices using MicroProfile sample, else jump to [Steps](#steps)
+## Deploy to Kubernetes Cluster from Bluemix
+If you want to deploy directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the Java microservices using MicroProfile sample, else jump to [Steps](#steps)
 
 [![Create Toolchain](https://github.com/IBM/container-journey-template/blob/master/images/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/java-microprofile-on-kubernetes)
 
