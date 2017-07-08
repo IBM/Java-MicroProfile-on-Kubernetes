@@ -30,8 +30,8 @@ sleep 3m
 }
 
 function run_tests() {
-bx cs workers sample
-$(bx cs cluster-config sample | grep -v "Downloading" | grep -v "OK" | grep -v "The")
+bx cs workers anthony-cluster-travis
+$(bx cs cluster-config anthony-cluster-travis | grep -v "Downloading" | grep -v "OK" | grep -v "The")
 
 echo "Creating Deployments"
 git clone https://github.com/IBM/java-microprofile-on-kubernetes.git
