@@ -73,7 +73,7 @@ bx cr images
 
 # 2. Get and build the application code
 
-* Install the [Microservice Builder fabric](https://microservicebuilder.mybluemix.net/docs/installing_fabric_task.html) - which provides additional services that run on top of Kubernetes.
+* Install the [Microservice Builder fabric](https://www.ibm.com/support/knowledgecenter/SS5PWC/setup.html) - Follow step 3 to 8 under the *Running Kuberenetes in your development environment* section(which provides additional services that run on top of Kubernetes).
 
 > **Note:** For the following steps, you can get the code and build the package by running the get_code.sh script present in scripts directory.
 
