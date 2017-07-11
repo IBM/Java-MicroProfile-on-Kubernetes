@@ -17,6 +17,18 @@ spec:
         image: docker.io/ishangulhane/microservice-speaker
         ports:
           - containerPort: 9080
+        imagePullPolicy: Always
+        env:
+          - name: MB_KEYSTORE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mb-keystore-password
+                key: password
+          - name: MB_TRUSTSTORE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mb-truststore-password
+                key: password
         volumeMounts:
         - name: keystore
           mountPath: /etc/wlp/config/keystore
@@ -27,18 +39,16 @@ spec:
       volumes:
       - name: keystore
         secret:
-          secretName: wlp-keystore
+          secretName: mb-keystore
       - name: truststore
         secret:
-          secretName: wlp-truststore
+          secretName: mb-truststore
       - name: liberty-config
         configMap:
           name: liberty-config
           items:
             - key: keystore.xml
               path: defaults/keystore.xml
-            - key: logging.xml
-              path: defaults/logging.xml
 ---
 apiVersion: v1
 kind: Service
