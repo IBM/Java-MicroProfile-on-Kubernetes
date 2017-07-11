@@ -7,7 +7,7 @@ curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github"
 sudo mv cf /usr/local/bin
 sudo curl -o /usr/share/bash-completion/completions/cf https://raw.githubusercontent.com/cloudfoundry/cli/master/ci/installers/completion/cf
 cf --version
-curl -L public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.1_amd64.tar.gz > Bluemix_CLI.tar.gz
+curl -L public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.5_amd64.tar.gz > Bluemix_CLI.tar.gz
 tar -xvf Bluemix_CLI.tar.gz
 cd Bluemix_CLI
 sudo ./install_bluemix_cli
@@ -30,8 +30,8 @@ sleep 3m
 }
 
 function run_tests() {
-bx cs workers anthony-cluster
-$(bx cs cluster-config anthony-cluster | grep -v "Downloading" | grep -v "OK" | grep -v "The")
+bx cs workers $cluster
+$(bx cs cluster-config $cluster | grep -v "Downloading" | grep -v "OK" | grep -v "The")
 
 echo "Creating Deployments"
 git clone https://github.com/IBM/java-microprofile-on-kubernetes.git
