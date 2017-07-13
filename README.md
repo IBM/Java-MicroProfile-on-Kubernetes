@@ -108,6 +108,8 @@ bx cr images
 
 Use the following commands to build the microservers containers.
 
+> **Note:** For the following steps, you can get the code and build the package by running the build_and_push_docker_images.sh script present in scripts directory.
+
 Build the web-app microservice container
 
 ```bash
