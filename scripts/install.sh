@@ -84,8 +84,8 @@ function install_helm(){
   helm install mb/fabric
 
   #Install Microservice Builder ELK Sample
-  linux-amd64/helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
-  linux-amd64/helm install mb-sample/sample-elk
+  helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
+  helm install mb-sample/sample-elk
 }
 
 function exit_tests() {
