@@ -157,7 +157,7 @@ NAME             STATUS    AGE
 ```
 Set the value of `SOURCE_IP` env variable present in deploy-nginx.yaml file present in manifests folder with the public ip of the node.
 
-Deploy the microservice from the manifests directory with the command `kubectl create -f <filename>`.
+Deploy the microservice with the command `kubectl create -f manifests`.
 
 After you have created all the services and deployments, wait for 10 to 15 minutes. You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the application containers are ready.
 

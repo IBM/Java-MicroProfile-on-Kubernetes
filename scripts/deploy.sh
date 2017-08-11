@@ -14,8 +14,11 @@ function install_helm(){
   #Add the repository
   linux-amd64/helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
   #Install Microservice Builder Fabric using Helm
-  sleep 30s
   linux-amd64/helm install mb/fabric
+  sleep 10s
+  #Install Microservice Builder ELK Sample
+  linux-amd64/helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
+  linux-amd64/helm install mb-sample/sample-elk
 }
 
 
@@ -37,14 +40,8 @@ eval "$exp"
 echo -e "Deleting previous version of Java microservices using MicroProfile if it exists"
 kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 
-kuber=$(kubectl get pods -l app=microprofile-app)
-if [ ${#kuber} -ne 0 ]; then
-	sleep 120s
-fi
-
 echo -e "Installing Helm"
 download_helm
-install_helm
 install_helm
 echo "Deploying speaker"
 cd manifests
@@ -65,7 +62,7 @@ kubectl create -f deploy-webapp.yaml
 echo "Deploying nginx"
 sed -i "s/xx.xx.xx.xx/$IP_ADDR/g" deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
-echo -e "Sleeping for 3m"
+echo -e "Sleeping for 3m to let the microservices finish configuring"
 sleep 3m
 PORT=$(kubectl get service nginx-svc | grep nginx-svc | sed 's/.*://g' | sed 's/\/.*//g')
 
