@@ -16,13 +16,13 @@ spec:
       containers:
       - name: nginx-image
         #change the image name
-        image: docker.io/ishangulhane/nginx-server
+        image: journeycode/nginx-server
         ports:
         - containerPort: 80
         env:
           - name: SOURCE_IP
            #change the value of IP with Kubernetes EXTERNAL-IP
-            value: xx.xx.xx.xx
+            value: 184.173.58.118
 ---
 apiVersion: v1
 kind: Service

@@ -17,3 +17,4 @@ buildAndPushDockerImages sample.microservicebuilder.schedule registry.ng.bluemix
 buildAndPushDockerImages sample.microservicebuilder.speaker registry.ng.bluemix.net/$1/microservice-speaker
 buildAndPushDockerImages sample.microservicebuilder.session registry.ng.bluemix.net/$1/microservice-session
 buildAndPushDockerImages sample.microservicebuilder.vote registry.ng.bluemix.net/$1/microservice-vote
+buildAndPushDockerImages nginx registry.ng.bluemix.net/$1/nginx-server
