@@ -1,6 +1,6 @@
 ---
-name: "Deploy Istio's Java MicroProfile sample to Bluemix"
-description: "Toolchain to deploy Java MicroProfile sample with Istio to Bluemix"
+name: "Deploy Java MicroProfile sample on Bluemix Kubernetes Cluster"
+description: "Toolchain to deploy Java MicroProfile sample on Bluemix Kubernetes Cluster"
 version: 0.1
 image: data:image/svg+xml;base64,$file(toolchain.svg,base64)
 icon: data:image/svg+xml;base64,$file(icon.svg,base64)

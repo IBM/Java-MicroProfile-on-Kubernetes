@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/IBM/Java-MicroProfile-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Java-MicroProfile-on-Kubernetes)
 
-
 #  Deploy MicroProfile based Java microservices on Kubernetes Cluster
 
 This code demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on Kubernetes Cluster.
@@ -36,59 +35,36 @@ Please follow the [Toolchain instructions](https://github.com/IBM/container-jour
 
 ## Steps
 
-1. [Install Docker CLI and Bluemix Container registry Plugin](#1-install-docker-cli-and-bluemix-container-registry-plugin)
+1. [Install Docker CLI and Microservice Builder add-ons](#1-install-docker-cli-and-microservice-builder-add-ons)
 2. [Get and build the application code](#2-get-and-build-the-application-code)
 3. [Build application containers](#3-build-application-containers)
 4. [Create Services and Deployments](#4-create-services-and-deployments)
 
-# 1. Install Docker CLI and Bluemix Container Registry Plugin
-
+# 1. Install Docker CLI and Microservice Builder add-ons
 
 First, install [Docker CLI](https://www.docker.com/community-edition#/download).
 
-Then, install the Bluemix container registry plugin.
+Then, install the 2 add-ons, [Microservice Builder Fabric](https://www.ibm.com/support/knowledgecenter/SS5PWC/fabric_concept.html) and [ELK Sample](https://github.com/WASdev/sample.microservicebuilder.helm.elk/blob/master/sample_elk_concept.md), to collect metrics from the MicroProfile Conference application. 
+  
+Install [Helm](https://github.com/kubernetes/helm) and use Helm to install the necessary add-ons on your Kubernetes.
 
-```bash
-bx plugin install container-registry -r bluemix
+```shell
+helm init
+
+#Install Fabric
+helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
+helm install --name fabric mb/fabric
+
+#Install ELK Sample
+helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
+helm install mb-sample/sample-elk
 ```
-
-Once the plugin is installed you can log into the Bluemix Container Registry.
-
-```bash
-bx cr login
-```
-
-If this is the first time using the Bluemix Container Registry you must set a namespace which identifies your private Bluemix images registry. It can be between 4 and 30 characters.
-
-```bash
-bx cr namespace-add <namespace>
-```
-
-Verify that it works.
-
-```bash
-bx cr images
-```
-
 
 # 2. Get and build the application code
 
-* First, install the 2 add-ons, [Microservice Builder Fabric](https://www.ibm.com/support/knowledgecenter/SS5PWC/fabric_concept.html) and [ELK Sample](https://github.com/WASdev/sample.microservicebuilder.helm.elk/blob/master/sample_elk_concept.md), to collect metrics from the MicroProfile Conference application. 
-  
-  Download [Helm](https://github.com/kubernetes/helm) and use Helm to install the add-ons on your Kubernetes.
-  ```shell
-  helm init
-  #Install Fabric
-  helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
-  helm install --name fabric mb/fabric
-  #Install ELK Sample
-  helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
-  helm install mb-sample/sample-elk
-  ```
-
 > **Note:** For the following steps, you can get the code and build the packages by running the `./scripts/get_code.sh` script.
 
-* `git clone` the following projects:
+* `git clone` and `mvn clean package` the following projects:
    * [Web-App](https://github.com/WASdev/sample.microservicebuilder.web-app)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.web-app.git
@@ -117,55 +93,60 @@ bx cr images
 
 # 3. Build application containers
 
-Use the following commands to build the microservers containers. If you want to upload your images on DockerHub, replace `registry.ng.bluemix.net/<namespace>` with your DockerHub username.
+Use the following commands to build and push your microservice containers.
 
-> **Note:** For the following steps, you can build and push the images by running `.scripts/build_and_push_docker_images.sh <namespace>`.
+> **Note:** For the following steps, you can build and push the images by running `.scripts/build_and_push_docker_images.sh <docker_namespace>`.
 
 Build the web-app microservice container
 
 ```bash
-docker build -t registry.ng.bluemix.net/<namespace>/microservice-webapp sample.microservicebuilder.web-app
-docker push registry.ng.bluemix.net/<namespace>/microservice-webapp
+docker build -t <docker_namespace>/microservice-webapp sample.microservicebuilder.web-app
+docker push <docker_namespace>/microservice-webapp
 ```
 
 Build the vote microservice container
 
 ```bash
-docker build -t registry.ng.bluemix.net/<namespace>/microservice-vote sample.microservicebuilder.vote
-docker push registry.ng.bluemix.net/<namespace>/microservice-vote
+docker build -t <docker_namespace>/microservice-vote sample.microservicebuilder.vote
+docker push <docker_namespace>/microservice-vote
 ```
 
 Build the schedule microservice container
 
 ```bash
-docker build -t registry.ng.bluemix.net/<namespace>/microservice-schedule sample.microservicebuilder.schedule
-docker push registry.ng.bluemix.net/<namespace>/microservice-schedule
+docker build -t <docker_namespace>/microservice-schedule sample.microservicebuilder.schedule
+docker push <docker_namespace>/microservice-schedule
 ```
 
 Build the speaker microservice container
 
 ```bash
-docker build -t registry.ng.bluemix.net/<namespace>/microservice-speaker sample.microservicebuilder.speaker
-docker push registry.ng.bluemix.net/<namespace>/microservice-speaker
+docker build -t <docker_namespace>/microservice-speaker sample.microservicebuilder.speaker
+docker push <docker_namespace>/microservice-speaker
 ```
 
 Build the session microservice container
 
 ```bash
-docker build -t registry.ng.bluemix.net/<namespace>/microservice-session sample.microservicebuilder.session
-docker push registry.ng.bluemix.net/<namespace>/microservice-session
+docker build -t <docker_namespace>/microservice-session sample.microservicebuilder.session
+docker push <docker_namespace>/microservice-session
 ```
 
 Build the nginx controller
 
 ```bash
-docker build -t registry.ng.bluemix.net/<namespace>/nginx-server nginx
-docker push registry.ng.bluemix.net/<namespace>/nginx-server
+docker build -t <docker_namespace>/nginx-server nginx
+docker push <docker_namespace>/nginx-server
 ```
 
 # 4. Create Services and Deployments
 
-Change the image name given in the respective deployment YAML files for all the projects in the manifests directory with the newly build image names.
+Change the image name given in the respective deployment YAML files for all the projects in the manifests directory with the newly build image names, or you can run the following script to change the image name and SOURCE_IP for all your YAML files.
+
+```shell
+.scripts/change_image_name_osx.sh <docker_username> #For Mac users
+.scripts/change_image_name_linux.sh <docker_username> #For Linux users
+```
 
 Get the public ip of the node
 
@@ -194,7 +175,7 @@ NAME        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 nginx-svc   10.10.10.167   <nodes>       80:30056/TCP   11s
 ```
 
-Now you can use the link **http://[IP]:30056** to access your application on browser.
+Now you can use the link **http://[IP]:30056** to access your application on browser and use **http://[IP]:30500** to access your Kibana for tracking the metrics.
 
 Web application home page
 
@@ -211,6 +192,10 @@ When you click on schedules link
 When you click on vote link
 
 ![Vote Info](images/ui4.png)
+
+Kibata discover page
+
+![Kibana](images/ui5.png)
 
 ## Troubleshooting
 
