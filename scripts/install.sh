@@ -45,23 +45,19 @@ install_helm
 echo "Deploying speaker"
 cd java-microprofile-on-kubernetes/manifests
 kubectl create -f deploy-speaker.yaml
-sleep_func
 
 echo "Deploying schedule"
 kubectl create -f deploy-schedule.yaml
-sleep_func
 
 echo "Deploying vote"
 kubectl create -f deploy-vote.yaml
-sleep_func
 
 echo "Deploying session"
 kubectl create -f deploy-session.yaml
-sleep_func
 
 echo "Deploying webapp"
 kubectl create -f deploy-webapp.yaml
-sleep_func
+
 echo "Deploying nginx"
 IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
 sed -i "s/xx.xx.xx.xx/$IP_ADDRESS/g" deploy-nginx.yaml
@@ -86,6 +82,10 @@ function install_helm(){
 
   #Install Microservice Builder Fabric using Helm
   helm install mb/fabric
+
+  #Install Microservice Builder ELK Sample
+  helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
+  helm install mb-sample/sample-elk
 }
 
 function exit_tests() {

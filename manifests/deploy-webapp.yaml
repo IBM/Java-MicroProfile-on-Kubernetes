@@ -14,7 +14,7 @@ spec:
       containers:
       - name: microservice-webapp
         #change the image name
-        image: docker.io/ishangulhane/microservice-webapp
+        image: journeycode/microservice-webapp
         ports:
           - containerPort: 9080
 ---
@@ -24,7 +24,6 @@ metadata:
   name: webapp-service
   labels:
     app: microprofile-app
-  namespace: default
 spec:
   ports:
     - port: 9080
