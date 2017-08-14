@@ -62,7 +62,7 @@ helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm
 helm install mb-sample/sample-elk
 ```
 
-*Note:* If you don't want to build your own application, you can use our default Docker images and move on to [step 4](#4-create-services-and-deployments).
+> Note: If you don't want to build your own application, you can use our default Docker images and move on to [step 4](#4-create-services-and-deployments).
 
 # 2. Get and build the application code
 
@@ -165,8 +165,6 @@ Alternatively, you can run the following script to change the image name and SOU
 .scripts/change_image_name_osx.sh <docker_username> #For Mac users
 .scripts/change_image_name_linux.sh <docker_username> #For Linux users
 ```
-
-Set the value of `SOURCE_IP` env variable present in deploy-nginx.yaml file present in manifests folder with the public ip of the node.
 
 Deploy the microservice with the command `kubectl create -f manifests`.
 
