@@ -59,7 +59,7 @@ kubectl create -f deploy-webapp.yaml
 
 echo "Deploying nginx"
 IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
-sed -i s#"xxx.xxx.xx.xxx"#$IP_ADDR# deploy-nginx.yaml
+sed -i s#"xxx.xxx.xx.xxx"#$IP_ADDRESS# deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
 sleep_func
 
