@@ -64,7 +64,7 @@ echo "Deploying webapp"
 kubectl create -f deploy-webapp.yaml
 
 echo "Deploying nginx"
-sed -i "s/xxx.xxx.xx.xxx/$IP_ADDR/g" deploy-nginx.yaml
+sed -i s#"xxx.xxx.xx.xxx"#$IP_ADDR#g deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
 echo -e "Sleeping for 3m to let the microservices finish configuring"
 sleep 3m

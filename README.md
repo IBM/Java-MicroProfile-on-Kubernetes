@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/IBM/Java-MicroProfile-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Java-MicroProfile-on-Kubernetes)
 
-#  Deploy MicroProfile based Java microservices on Kubernetes Cluster
+# Deploy MicroProfile based Java microservices on Kubernetes Cluster
 
 This code demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on Kubernetes Cluster.
 
@@ -22,8 +22,6 @@ The Microservice Builder [sample application](https://github.com/WASdev/sample.m
 * Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, or with [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template) to deploy in cloud. For deploying on Minikube follow the instructions [here](https://github.com/WASdev/sample.microservicebuilder.docs/blob/master/dev_test_local_minikube.md)
 * The code in this particular repository is regularly tested against [Kubernetes Cluster from Bluemix Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
 * Install a Git client to obtain the sample code.
-* Install [Maven](https://maven.apache.org/download.cgi) and a Java 8 JDK.
-* Install a [Docker](https://docs.docker.com/engine/installation/) engine.
 
 
 ## Deploy to Kubernetes Cluster from Bluemix
@@ -35,14 +33,18 @@ Please follow the [Toolchain instructions](https://github.com/IBM/container-jour
 
 ## Steps
 
-1. [Install Docker CLI and Microservice Builder add-ons](#1-install-docker-cli-and-microservice-builder-add-ons)
+1. [Install Microservice Builder add-ons](#1-install-microservice-builder-add-ons)
 2. [Get and build the application code](#2-get-and-build-the-application-code)
 3. [Build application containers](#3-build-application-containers)
 4. [Create Services and Deployments](#4-create-services-and-deployments)
 
-# 1. Install Docker CLI and Microservice Builder add-ons
+# 1. Install Microservice Builder add-ons
 
-First, install [Docker CLI](https://www.docker.com/community-edition#/download).
+First, clone our repository.
+```shell
+git clone https://github.com/IBM/Java-MicroProfile-on-Kubernetes.git
+cd Java-MicroProfile-on-Kubernetes
+```
 
 Then, install the 2 add-ons, [Microservice Builder Fabric](https://www.ibm.com/support/knowledgecenter/SS5PWC/fabric_concept.html) and [ELK Sample](https://github.com/WASdev/sample.microservicebuilder.helm.elk/blob/master/sample_elk_concept.md), to collect metrics from the MicroProfile Conference application. 
   
@@ -61,6 +63,8 @@ helm install mb-sample/sample-elk
 ```
 
 # 2. Get and build the application code
+
+* Install [Maven](https://maven.apache.org/download.cgi) and a Java 8 JDK.
 
 > **Note:** For the following steps, you can get the code and build the packages by running the `./scripts/get_code.sh` script.
 
@@ -90,6 +94,8 @@ helm install mb-sample/sample-elk
 
 
 # 3. Build application containers
+
+Install [Docker CLI](https://www.docker.com/community-edition#/download) and a [Docker](https://docs.docker.com/engine/installation/) engine.
 
 Use the following commands to build and push your microservice containers.
 
