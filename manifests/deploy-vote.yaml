@@ -32,10 +32,10 @@ spec:
                 name: mb-truststore-password
                 key: password
           - name: dbUsername
-          valueFrom:
-            secretKeyRef:
-              name: cloudant-secret
-              key: dbUsername
+            valueFrom:
+              secretKeyRef:
+                name: cloudant-secret
+                key: dbUsername
           - name: dbPassword
             valueFrom:
               secretKeyRef:
