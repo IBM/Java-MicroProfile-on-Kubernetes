@@ -33,17 +33,16 @@ function run_tests() {
 bx cs workers $cluster
 $(bx cs cluster-config $cluster | grep -v "Downloading" | grep -v "OK" | grep -v "The")
 
-echo "Creating Deployments"
-git clone https://github.com/IBM/java-microprofile-on-kubernetes.git
-
 echo "Removing deployments"
 kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 
 echo "Installing Helm"
 install_helm
 
+echo "Deploying Cloudant"
+kubectl create -f deploy-cloudant.yaml
+
 echo "Deploying speaker"
-cd java-microprofile-on-kubernetes/manifests
 kubectl create -f deploy-speaker.yaml
 
 echo "Deploying schedule"
@@ -60,7 +59,7 @@ kubectl create -f deploy-webapp.yaml
 
 echo "Deploying nginx"
 IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
-sed -i "s/xx.xx.xx.xx/$IP_ADDRESS/g" deploy-nginx.yaml
+sed -i "s/xxx.xxx.xx.xxx/$IP_ADDRESS/g" deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
 sleep_func
 

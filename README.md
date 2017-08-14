@@ -84,8 +84,6 @@ helm install mb-sample/sample-elk
    * [Vote](https://github.com/WASdev/sample.microservicebuilder.vote)
    ```bash
       git clone https://github.com/WASdev/sample.microservicebuilder.vote.git
-      cd sample.microservicebuilder.vote/
-      git checkout 4bd11a9bcdc7f445d7596141a034104938e08b22
   ```
 
 * `mvn clean package` in each ../sample.microservicebuilder.* projects
@@ -108,7 +106,7 @@ Build the vote microservice container
 
 ```bash
 docker build -t <docker_namespace>/microservice-vote sample.microservicebuilder.vote
-docker push <docker_namespace>/microservice-vote
+docker push <docker_namespace>/microservice-vote-cloudant
 ```
 
 Build the schedule microservice container

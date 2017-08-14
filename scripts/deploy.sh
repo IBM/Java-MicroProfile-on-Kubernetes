@@ -43,8 +43,12 @@ kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 echo -e "Installing Helm"
 download_helm
 install_helm
-echo "Deploying speaker"
+
+echo "Deploying Cloudant"
 cd manifests
+kubectl create -f deploy-cloudant.yaml
+
+echo "Deploying speaker"
 kubectl create -f deploy-speaker.yaml
 
 echo "Deploying schedule"
@@ -60,7 +64,7 @@ echo "Deploying webapp"
 kubectl create -f deploy-webapp.yaml
 
 echo "Deploying nginx"
-sed -i "s/xx.xx.xx.xx/$IP_ADDR/g" deploy-nginx.yaml
+sed -i "s/xxx.xxx.xx.xxx/$IP_ADDR/g" deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
 echo -e "Sleeping for 3m to let the microservices finish configuring"
 sleep 3m
