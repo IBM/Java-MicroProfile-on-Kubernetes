@@ -61,6 +61,7 @@ helm install --name fabric mb/fabric
 helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
 helm install --name sample-elk mb-sample/sample-elk
 ```
+It will take up to 20 minutes to install the Microservice Builder Add-ons on your Kubernetes Cluster. In the meantime, let's start building our applications and microservices.
 
 > Note: If you don't want to build your own application, you can use our default Docker images and move on to [step 4](#4-create-services-and-deployments).
 
@@ -68,7 +69,11 @@ helm install --name sample-elk mb-sample/sample-elk
 
 * Install [Maven](https://maven.apache.org/download.cgi) and a Java 8 JDK.
 
-> **Note:** For the following steps, you can get the code and build the packages by running the `./scripts/get_code.sh` script.
+> **Note:** For the following steps, you can get the code and build the packages by running 
+> ```shell
+> ./scripts/get_code.sh
+> ``` 
+
 
 * `git clone` and `mvn clean package` the following projects:
    * [Web-App](https://github.com/WASdev/sample.microservicebuilder.web-app)
@@ -101,7 +106,10 @@ Install [Docker CLI](https://www.docker.com/community-edition#/download) and a [
 
 Use the following commands to build and push your microservice containers.
 
-> **Note:** For the following steps, you can build and push the images by running `.scripts/build_and_push_docker_images.sh <docker_namespace>`.
+> **Note:** For the following steps, you can build and push the images by running 
+> ```shell
+> ./scripts/build_and_push_docker_images.sh <docker_namespace>
+> ```
 
 Build the web-app microservice container
 
@@ -162,11 +170,22 @@ Alternatively, you can run the following script to change the image name and SOU
 > If you want to use our default images, use **journeycode** as the *docker_username* when you run the script.
 
 ```shell
-.scripts/change_image_name_osx.sh <docker_username> #For Mac users
-.scripts/change_image_name_linux.sh <docker_username> #For Linux users
+./scripts/change_image_name_osx.sh <docker_username> #For Mac users
+./scripts/change_image_name_linux.sh <docker_username> #For Linux users
 ```
 
-Deploy the microservice with the command `kubectl create -f manifests`.
+Before you start deploying your application, make sure the Microservice Builder Add-ons are installed and running.
+```shell
+$ kubectl get pods --show-all=true
+NAME                                    READY     STATUS      RESTARTS   AGE
+fabric-zipkin-4284087195-d6s1t          1/1       Running     0          11m
+key-retrieval-deploy-gkr9n              0/1       Completed   0          11m  # Make sure this job is completed
+kibana-dashboard-deploy-rd0q5           1/1       Running     0          11m 
+sample-elk-sample-elk-461262821-rp1rl   3/3       Running     0          11m 
+secret-generator-deploy-bj1jj           0/1       Completed   0          11m  # Make sure this job is completed
+```
+
+Now, deploy the microservice with the command `kubectl create -f manifests`.
 
 After you have created all the services and deployments, wait for 10 to 15 minutes. You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the application containers are ready.
 
