@@ -58,8 +58,8 @@ kubectl create -f manifests/deploy-webapp.yaml
 
 echo "Deploying nginx"
 IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
-sed -i s#"xxx.xxx.xx.xxx"#$IP_ADDRESS# deploy-nginx.yaml
-kubectl create -f deploy-nginx.yaml
+sed -i s#"xxx.xxx.xx.xxx"#$IP_ADDRESS# manifests/deploy-nginx.yaml
+kubectl create -f manifests/deploy-nginx.yaml
 sleep_func
 
 }
@@ -88,6 +88,7 @@ function install_helm(){
 
 function exit_tests() {
   kubectl delete svc,rc,deployments,pods -l app=microprofile-app
+  kubectl delete -f manifests/deploy-cloudant.yaml
 }
 
 
