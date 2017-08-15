@@ -7,10 +7,9 @@ curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github"
 sudo mv cf /usr/local/bin
 sudo curl -o /usr/share/bash-completion/completions/cf https://raw.githubusercontent.com/cloudfoundry/cli/master/ci/installers/completion/cf
 cf --version
-curl -L public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.5_amd64.tar.gz > Bluemix_CLI.tar.gz
+curl -L public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.4_amd64.tar.gz > Bluemix_CLI.tar.gz
 tar -xvf Bluemix_CLI.tar.gz
-cd Bluemix_CLI
-sudo ./install_bluemix_cli
+sudo ./Bluemix_CLI/install_bluemix_cli
 }
 
 function bluemix_auth() {
@@ -33,10 +32,6 @@ function run_tests() {
 bx cs workers $cluster
 $(bx cs cluster-config $cluster | grep -v "Downloading" | grep -v "OK" | grep -v "The")
 
-echo "Creating Deployments"
-git clone https://github.com/IBM/Java-MicroProfile-on-Kubernetes.git
-cd Java-MicroProfile-on-Kubernetes/manifests
-
 echo "Removing deployments"
 kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 
@@ -44,22 +39,22 @@ echo "Installing Helm"
 install_helm
 
 echo "Deploying Cloudant"
-kubectl create -f deploy-cloudant.yaml
+kubectl create -f manifests/deploy-cloudant.yaml
 
 echo "Deploying speaker"
-kubectl create -f deploy-speaker.yaml
+kubectl create -f manifests/deploy-speaker.yaml
 
 echo "Deploying schedule"
-kubectl create -f deploy-schedule.yaml
+kubectl create -f manifests/deploy-schedule.yaml
 
 echo "Deploying vote"
-kubectl create -f deploy-vote.yaml
+kubectl create -f manifests/deploy-vote.yaml
 
 echo "Deploying session"
-kubectl create -f deploy-session.yaml
+kubectl create -f manifests/deploy-session.yaml
 
 echo "Deploying webapp"
-kubectl create -f deploy-webapp.yaml
+kubectl create -f manifests/deploy-webapp.yaml
 
 echo "Deploying nginx"
 IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
