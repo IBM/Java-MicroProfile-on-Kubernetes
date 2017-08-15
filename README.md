@@ -61,6 +61,7 @@ helm install --name fabric mb/fabric
 helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
 helm install --name sample-elk mb-sample/sample-elk
 ```
+It will take up to 20 minutes to install the Microservice Builder Add-ons on your Kubernetes Cluster. In the meantime, let's start building our applications and microservices.
 
 > Note: If you don't want to build your own application, you can use our default Docker images and move on to [step 4](#4-create-services-and-deployments).
 
@@ -173,7 +174,18 @@ Alternatively, you can run the following script to change the image name and SOU
 ./scripts/change_image_name_linux.sh <docker_username> #For Linux users
 ```
 
-Deploy the microservice with the command `kubectl create -f manifests`.
+Before you start deploying your application, make sure the Microservice Builder Add-ons are installed and running.
+```shell
+$ kubectl get pods --show-all=true
+NAME                                    READY     STATUS      RESTARTS   AGE
+fabric-zipkin-4284087195-d6s1t          1/1       Running     0          11m
+key-retrieval-deploy-gkr9n              0/1       Completed   0          11m  # Make sure this job is completed
+kibana-dashboard-deploy-rd0q5           1/1       Running     0          11m 
+sample-elk-sample-elk-461262821-rp1rl   3/3       Running     0          11m 
+secret-generator-deploy-bj1jj           0/1       Completed   0          11m  # Make sure this job is completed
+```
+
+Now, deploy the microservice with the command `kubectl create -f manifests`.
 
 After you have created all the services and deployments, wait for 10 to 15 minutes. You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the application containers are ready.
 
