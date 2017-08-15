@@ -68,7 +68,11 @@ helm install --name sample-elk mb-sample/sample-elk
 
 * Install [Maven](https://maven.apache.org/download.cgi) and a Java 8 JDK.
 
-> **Note:** For the following steps, you can get the code and build the packages by running the `./scripts/get_code.sh` script.
+> **Note:** For the following steps, you can get the code and build the packages by running 
+> ```shell
+> ./scripts/get_code.sh
+> ``` 
+
 
 * `git clone` and `mvn clean package` the following projects:
    * [Web-App](https://github.com/WASdev/sample.microservicebuilder.web-app)
@@ -101,7 +105,10 @@ Install [Docker CLI](https://www.docker.com/community-edition#/download) and a [
 
 Use the following commands to build and push your microservice containers.
 
-> **Note:** For the following steps, you can build and push the images by running `.scripts/build_and_push_docker_images.sh <docker_namespace>`.
+> **Note:** For the following steps, you can build and push the images by running 
+> ```shell
+> ./scripts/build_and_push_docker_images.sh <docker_namespace>
+> ```
 
 Build the web-app microservice container
 
@@ -162,8 +169,8 @@ Alternatively, you can run the following script to change the image name and SOU
 > If you want to use our default images, use **journeycode** as the *docker_username* when you run the script.
 
 ```shell
-.scripts/change_image_name_osx.sh <docker_username> #For Mac users
-.scripts/change_image_name_linux.sh <docker_username> #For Linux users
+./scripts/change_image_name_osx.sh <docker_username> #For Mac users
+./scripts/change_image_name_linux.sh <docker_username> #For Linux users
 ```
 
 Deploy the microservice with the command `kubectl create -f manifests`.
