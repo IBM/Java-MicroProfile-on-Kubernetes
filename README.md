@@ -59,7 +59,7 @@ helm install --name fabric mb/fabric
 
 #Install ELK Sample
 helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
-helm install mb-sample/sample-elk
+helm install --name sample-elk mb-sample/sample-elk
 ```
 
 > Note: If you don't want to build your own application, you can use our default Docker images and move on to [step 4](#4-create-services-and-deployments).
@@ -212,9 +212,11 @@ Kibata discover page
 	* `kubectl logs <your-pod-name>`
 * To delete a microservice
 	* `kubectl delete -f manifests/<microservice-yaml-file>`
-* To delete everything
+* To delete all microservices
 	* `kubectl delete -f manifests`
-
+* To delete Microservice Builder add-ons
+  	* `helm delete --purge sample-elk`
+  	* `helm delete --purge fabric`
 
 ## References
 * This java microservices example is based on Kubernete's [Microprofile Showcase Application](https://github.com/WASdev/sample.microservicebuilder.docs).
