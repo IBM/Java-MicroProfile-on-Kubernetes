@@ -14,10 +14,12 @@ spec:
       containers:
       - name: microservice-vote
         #change the image name
-        image: journeycode/microservice-vote
+        image: journeycode/microservice-vote-cloudant
         ports:
           - containerPort: 9080
         imagePullPolicy: Always
+        command: ["/bin/sh","-c"]
+        args: ["if [ ! -z $dbPassword ]; then export dbUrl=http://$CLOUDANT_SERVICE_SERVICE_HOST:$CLOUDANT_SERVICE_SERVICE_PORT; exec /opt/ibm/wlp/bin/server run defaultServer; fi;"]
         env:
           - name: MB_KEYSTORE_PASSWORD
             valueFrom:
@@ -29,6 +31,20 @@ spec:
               secretKeyRef:
                 name: mb-truststore-password
                 key: password
+          - name: dbUsername
+            valueFrom:
+              secretKeyRef:
+                name: cloudant-secret
+                key: dbUsername
+          - name: dbPassword
+            valueFrom:
+              secretKeyRef:
+                name: cloudant-secret
+                key: dbPassword 
+          - name: dbHost
+            value: $CLOUDANT_SERVICE_SERVICE_HOST
+          - name: dbPort
+            value: $CLOUDANT_SERVICE_SERVICE_PORT
         volumeMounts:
         - name: keystore
           mountPath: /etc/wlp/config/keystore

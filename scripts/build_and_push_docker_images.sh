@@ -16,5 +16,5 @@ buildAndPushDockerImages sample.microservicebuilder.web-app $1/microservice-weba
 buildAndPushDockerImages sample.microservicebuilder.schedule $1/microservice-schedule
 buildAndPushDockerImages sample.microservicebuilder.speaker $1/microservice-speaker
 buildAndPushDockerImages sample.microservicebuilder.session $1/microservice-session
-buildAndPushDockerImages sample.microservicebuilder.vote $1/microservice-vote
+buildAndPushDockerImages sample.microservicebuilder.vote $1/microservice-vote-cloudant
 buildAndPushDockerImages nginx $1/nginx-server

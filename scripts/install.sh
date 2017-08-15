@@ -9,8 +9,7 @@ sudo curl -o /usr/share/bash-completion/completions/cf https://raw.githubusercon
 cf --version
 curl -L public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.5_amd64.tar.gz > Bluemix_CLI.tar.gz
 tar -xvf Bluemix_CLI.tar.gz
-cd Bluemix_CLI
-sudo ./install_bluemix_cli
+sudo ./Bluemix_CLI/install_bluemix_cli
 }
 
 function bluemix_auth() {
@@ -33,35 +32,34 @@ function run_tests() {
 bx cs workers $cluster
 $(bx cs cluster-config $cluster | grep -v "Downloading" | grep -v "OK" | grep -v "The")
 
-echo "Creating Deployments"
-git clone https://github.com/IBM/java-microprofile-on-kubernetes.git
-
 echo "Removing deployments"
 kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 
 echo "Installing Helm"
 install_helm
 
+echo "Deploying Cloudant"
+kubectl create -f manifests/deploy-cloudant.yaml
+
 echo "Deploying speaker"
-cd java-microprofile-on-kubernetes/manifests
-kubectl create -f deploy-speaker.yaml
+kubectl create -f manifests/deploy-speaker.yaml
 
 echo "Deploying schedule"
-kubectl create -f deploy-schedule.yaml
+kubectl create -f manifests/deploy-schedule.yaml
 
 echo "Deploying vote"
-kubectl create -f deploy-vote.yaml
+kubectl create -f manifests/deploy-vote.yaml
 
 echo "Deploying session"
-kubectl create -f deploy-session.yaml
+kubectl create -f manifests/deploy-session.yaml
 
 echo "Deploying webapp"
-kubectl create -f deploy-webapp.yaml
+kubectl create -f manifests/deploy-webapp.yaml
 
 echo "Deploying nginx"
 IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
-sed -i "s/xx.xx.xx.xx/$IP_ADDRESS/g" deploy-nginx.yaml
-kubectl create -f deploy-nginx.yaml
+sed -i s#"xxx.xxx.xx.xxx"#$IP_ADDRESS# manifests/deploy-nginx.yaml
+kubectl create -f manifests/deploy-nginx.yaml
 sleep_func
 
 }
@@ -89,7 +87,7 @@ function install_helm(){
 }
 
 function exit_tests() {
-  kubectl delete svc,rc,deployments,pods -l app=microprofile-app
+  kubectl delete pv,pvc,jobs,svc,rc,deployments,pods -l app=microprofile-app
 }
 
 
