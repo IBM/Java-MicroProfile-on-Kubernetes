@@ -87,8 +87,7 @@ function install_helm(){
 }
 
 function exit_tests() {
-  kubectl delete svc,rc,deployments,pods -l app=microprofile-app
-  kubectl delete -f manifests/deploy-cloudant.yaml
+  kubectl delete pv,pvc,jobs,svc,rc,deployments,pods -l app=microprofile-app
 }
 
 
