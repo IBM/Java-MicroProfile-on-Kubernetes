@@ -155,7 +155,7 @@ docker push <docker_namespace>/nginx-server
 
 # 4. Create Services and Deployments
 
-Get the I[ of the node
+Get the IP of the node
 
 ```bash
 $ kubectl get nodes
