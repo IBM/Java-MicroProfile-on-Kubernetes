@@ -155,15 +155,15 @@ docker push <docker_namespace>/nginx-server
 
 # 4. Create Services and Deployments
 
-Get the public ip of the node
+Get the I[ of the node
 
 ```bash
 $ kubectl get nodes
 NAME             STATUS    AGE
-169.47.241.106   Ready     23h
+10.76.193.96     Ready     23h
 ```
 
-Change the image name given in the respective deployment YAML files for all the projects in the manifests directory with the newly build image names. Then, set the value of `SOURCE_IP` env variable present in deploy-nginx.yaml file present in manifests folder with the public ip of the node. 
+Change the image name given in the respective deployment YAML files for all the projects in the manifests directory with the newly build image names. Then, set the value of `SOURCE_IP` env variable present in deploy-nginx.yaml file present in manifests folder with the IP of the node. 
 
 Alternatively, you can run the following script to change the image name and SOURCE_IP for all your YAML files.
 
