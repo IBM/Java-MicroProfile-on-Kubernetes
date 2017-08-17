@@ -195,15 +195,16 @@ After you have created all the services and deployments, wait for 10 to 15 minut
 After few minutes the following commands to get your public IP and NodePort number.
 
 ```bash
-$ kubectl get nodes
-NAME             STATUS    AGE
-169.47.241.106   Ready     23h
+$ bx cs workers <cluster_name>
+OK
+ID                                                 Public IP      Private IP     Machine Type   State    Status   
+kube-hou02-pa817264f1244245d38c4de72fffd527ca-w1   184.173.1.55   10.76.193.96   free           normal   Ready 
 $ kubectl get svc nginx-svc
 NAME        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
-nginx-svc   10.10.10.167   <nodes>       80:30056/TCP   11s
+nginx-svc   10.76.193.96   <nodes>       80:30056/TCP   11s
 ```
 
-Now you can use the link **http://[IP]:30056** to access your application on browser and use **http://[IP]:30500** to access your Kibana for tracking the metrics.
+Now you can use the link **http://[Public IP]:30056** to access your application on browser and use **http://[Public IP]:30500** to access your Kibana for tracking the metrics.
 
 Web application home page
 
