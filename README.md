@@ -2,6 +2,8 @@
 
 # Deploy MicroProfile based Java microservices on Kubernetes Cluster
 
+*Read this in other languages: [한국어](README-ko.md).*
+
 This code demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on Kubernetes Cluster.
 
 [MicroProfile](http://microprofile.io) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. [Microservice Builder](https://developer.ibm.com/microservice-builder/) provides means to develop, test and deploy your microservices using a Java and MicroProfile based programming model and tools.
