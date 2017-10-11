@@ -19,9 +19,13 @@ The Microservice Builder [sample application](https://github.com/WASdev/sample.m
 - [Bluemix DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
 - [Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
 
-## Prerequisite
+## Prerequisites
 
-* Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, or with [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template) to deploy in cloud. For deploying on Minikube follow the instructions [here](https://github.com/WASdev/sample.microservicebuilder.docs/blob/master/dev_test_local_minikube.md)
+* Create a Kubernetes cluster.  Options include:
+ * [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing
+ * [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template) to deploy in cloud, or
+ * [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) for either senario.
+For deploying on Minikube follow the instructions [here](https://github.com/WASdev/sample.microservicebuilder.docs/blob/master/dev_test_local_minikube.md).  For deploying on IBM Cloud Private follow the instructions [here](docs/deploy-with-ICP.md)
 * The code in this particular repository is regularly tested against [Kubernetes Cluster from Bluemix Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
 * Install a Git client to obtain the sample code.
 
