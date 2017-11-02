@@ -1,0 +1,30 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: microprofile-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /speaker
+        backend:
+          serviceName: speaker-service
+          servicePort: 9080
+      - path: /session
+        backend:
+          serviceName: session-service
+          servicePort: 9080
+      - path: /schedule
+        backend:
+          serviceName: schedule-service
+          servicePort: 9080
+      - path: /vote
+        backend:
+          serviceName: vote-service
+          servicePort: 9080
+      - backend:
+          serviceName: webapp-service
+          servicePort: 9080

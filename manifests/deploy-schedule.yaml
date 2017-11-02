@@ -59,10 +59,9 @@ metadata:
   labels:
     app: microprofile-app
 spec:
+  clusterIP: None
   ports:
     - port: 9080
       targetPort: 9080
-      nodePort: 30054
   selector:
     name: schedule-deployment
-  type: NodePort
