@@ -54,15 +54,14 @@ metadata:
   labels:
     app: microprofile-app
 spec:
-  type: NodePort
+  clusterIP: None
   ports:
     - port: 80
-      nodePort: 31111
       targetPort: 80
       name: http
   selector:
     name: cloudant-deployment
---- 
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:

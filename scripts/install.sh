@@ -38,28 +38,9 @@ kubectl delete svc,rc,deployments,pods -l app=microprofile-app
 echo "Installing Helm"
 install_helm
 
-echo "Deploying Cloudant"
-kubectl create -f manifests/deploy-cloudant.yaml
+echo "Deploying Microservices"
+kubectl create -f manifests
 
-echo "Deploying speaker"
-kubectl create -f manifests/deploy-speaker.yaml
-
-echo "Deploying schedule"
-kubectl create -f manifests/deploy-schedule.yaml
-
-echo "Deploying vote"
-kubectl create -f manifests/deploy-vote.yaml
-
-echo "Deploying session"
-kubectl create -f manifests/deploy-session.yaml
-
-echo "Deploying webapp"
-kubectl create -f manifests/deploy-webapp.yaml
-
-echo "Deploying nginx"
-IP_ADDRESS=$(bx cs workers $(bx cs clusters | grep deployed | awk '{ print $1 }') | grep deployed | awk '{ print $2 }')
-sed -i s#"xxx.xxx.xx.xxx"#$IP_ADDRESS# manifests/deploy-nginx.yaml
-kubectl create -f manifests/deploy-nginx.yaml
 sleep_func
 
 }
@@ -74,6 +55,9 @@ function install_helm(){
   # Install Tiller using Helm
   echo "Install Tiller"
   helm init
+
+  echo "Wait for helm to be ready..."
+  sleep 120
 
   #Add the repository
   helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/

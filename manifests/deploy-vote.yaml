@@ -40,7 +40,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: cloudant-secret
-                key: dbPassword 
+                key: dbPassword
           - name: dbHost
             value: $CLOUDANT_SERVICE_SERVICE_HOST
           - name: dbPort
@@ -75,10 +75,9 @@ metadata:
   labels:
     app: microprofile-app
 spec:
+  clusterIP: None
   ports:
     - port: 9080
       targetPort: 9080
-      nodePort: 30055
   selector:
     name: vote-deployment
-  type: NodePort
