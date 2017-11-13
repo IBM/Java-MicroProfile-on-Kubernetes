@@ -104,3 +104,24 @@ spec:
         - name: cloudant-pv
           persistentVolumeClaim:
             claimName: cloudant-pv-claim
+---
+apiVersion: batch/v1
+kind: Job
+metadata: {name: java-microprofile-on-kubernetes-metrics}
+spec:
+  template:
+    metadata: {name: java-microprofile-on-kubernetes-metrics}
+    spec:
+      containers:
+        - env:
+            - {name: config, value: '{"event_id": "web",
+                "repository_id": "Java-MicroProfile-on-Kubernetes",
+                "target_services": [null], "target_runtimes":
+                ["Kubernetes Cluster"], "event_organizer":
+                "dev-journeys"}'}
+            - {name: language, value: ''}
+          image: journeycode/kubernetes:latest
+          name: java-microprofile-on-kubernetes-metrics
+          resources:
+            limits: {cpu: 100m}
+      restartPolicy: Never
