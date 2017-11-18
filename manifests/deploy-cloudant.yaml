@@ -119,7 +119,7 @@ spec:
                 "target_services": [null], "target_runtimes":
                 ["Kubernetes Cluster"], "event_organizer":
                 "dev-journeys"}'}
-            - {name: language, value: ''}
+            - {name: language, value: 'java'}
           image: journeycode/kubernetes:latest
           name: java-microprofile-on-kubernetes-metrics
           resources:
