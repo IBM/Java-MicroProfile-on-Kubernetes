@@ -16,7 +16,7 @@ echo "Install the Bluemix container-service plugin"
 bx plugin install container-service -r Bluemix
 
 echo "Install kubectl"
-wget --quiet --output-document=/tmp/Bluemix_CLI/bin/kubectl  https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+wget --quiet --output-document=/tmp/Bluemix_CLI/bin/kubectl  https://storage.googleapis.com/kubernetes-release/release/"$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"/bin/linux/amd64/kubectl
 chmod +x /tmp/Bluemix_CLI/bin/kubectl
 
 if [ -n "$DEBUG" ]; then
@@ -24,9 +24,9 @@ if [ -n "$DEBUG" ]; then
   bx plugin list
 fi
 
-if [ -z $CF_ORG ]; then
+if [ -z "$CF_ORG" ]; then
   CF_ORG="$BLUEMIX_ORG"
 fi
-if [ -z $CF_SPACE ]; then
+if [ -z "$CF_SPACE" ]; then
   CF_SPACE="$BLUEMIX_SPACE"
 fi

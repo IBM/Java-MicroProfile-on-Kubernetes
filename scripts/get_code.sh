@@ -1,6 +1,6 @@
 function mvn_clean() {
   #statements
-  cd $1
+  cd "$1" || return
   mvn clean package
   cd ..
 }

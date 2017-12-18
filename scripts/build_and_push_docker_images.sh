@@ -1,9 +1,9 @@
 #!/bin/bash
 
 function buildAndPushDockerImages {
-  cd $1
-  docker build -t $2 .
-  docker push $2
+  cd "$1" || return
+  docker build -t "$2" .
+  docker push "$2"
   cd ..
 }
 
@@ -12,9 +12,9 @@ if [ $# -ne 1 ]; then
     exit
 fi
 
-buildAndPushDockerImages sample.microservicebuilder.web-app $1/microservice-webapp  
-buildAndPushDockerImages sample.microservicebuilder.schedule $1/microservice-schedule
-buildAndPushDockerImages sample.microservicebuilder.speaker $1/microservice-speaker
-buildAndPushDockerImages sample.microservicebuilder.session $1/microservice-session
-buildAndPushDockerImages sample.microservicebuilder.vote $1/microservice-vote-cloudant
-buildAndPushDockerImages nginx $1/nginx-server
+buildAndPushDockerImages sample.microservicebuilder.web-app "$1"/microservice-webapp  
+buildAndPushDockerImages sample.microservicebuilder.schedule "$1"/microservice-schedule
+buildAndPushDockerImages sample.microservicebuilder.speaker "$1"/microservice-speaker
+buildAndPushDockerImages sample.microservicebuilder.session "$1"/microservice-session
+buildAndPushDockerImages sample.microservicebuilder.vote "$1"/microservice-vote-cloudant
+buildAndPushDockerImages nginx "$1"/nginx-server
