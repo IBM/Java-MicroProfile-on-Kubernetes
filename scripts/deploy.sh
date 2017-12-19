@@ -23,15 +23,15 @@ function install_helm(){
 
 
 echo "Create Java microservices using MicroProfile"
-IP_ADDR=$(bx cs workers $CLUSTER_NAME | grep Ready | awk '{ print $2 }')
-if [ -z $IP_ADDR ]; then
+IP_ADDR=$(bx cs workers "$CLUSTER_NAME" | grep Ready | awk '{ print $2 }')
+if [ -z "$IP_ADDR" ]; then
   echo "$CLUSTER_NAME not created or workers not ready"
   exit 1
 fi
 
 echo -e "Configuring vars"
-exp=$(bx cs cluster-config $CLUSTER_NAME | grep export)
-if [ $? -ne 0 ]; then
+exp=$(bx cs cluster-config "$CLUSTER_NAME" | grep export)
+if [ -z "$exp" ]; then
   echo "Cluster $CLUSTER_NAME not created or not ready."
   exit 1
 fi
@@ -45,7 +45,7 @@ download_helm
 install_helm
 
 echo "Deploying Cloudant"
-cd manifests
+cd manifests || return
 kubectl create -f deploy-cloudant.yaml
 
 echo "Deploying speaker"
@@ -64,7 +64,7 @@ echo "Deploying webapp"
 kubectl create -f deploy-webapp.yaml
 
 echo "Deploying nginx"
-sed -i s#"xxx.xxx.xx.xxx"#$IP_ADDR# deploy-nginx.yaml
+sed -i s#"xxx.xxx.xx.xxx"#"$IP_ADDR"# deploy-nginx.yaml
 kubectl create -f deploy-nginx.yaml
 echo -e "Sleeping for 3m to let the microservices finish configuring"
 sleep 3m

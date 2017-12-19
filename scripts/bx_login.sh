@@ -9,7 +9,7 @@ fi
 
 
 if [ -z "$BLUEMIX_USER" ] || [ -z "$BLUEMIX_PASSWORD" ] || [ -z "$BLUEMIX_ACCOUNT" ]; then
-    if [ -z "$API_KEY"]
+    if [ -z "$API_KEY" ]
     then
         echo "Define BLUEMIX_USER, BLUEMIX PASSWORD and BLUEMIX_ACCOUNT environment variables or just use the API_KEY environment variable."
         exit 1

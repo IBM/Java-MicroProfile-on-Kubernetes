@@ -32,7 +32,7 @@ function install_helm(){
   sleep_func
 }
 
-function install_prereqs(){}
+function install_prereqs(){
   echo Install Microservice Builder Fabric using Helm
   helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
   helm install mb/fabric
