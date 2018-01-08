@@ -2,7 +2,7 @@
 
 # Deploy MicroProfile based Java microservices on Kubernetes.
 
-*Read this in other languages: [한국어](README-ko.md).*
+*Read this in other languages: [한국어](README-ko.md)、[中国](README-cn.md).*
 
 This code demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on Kubernetes.
 
