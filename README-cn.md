@@ -41,7 +41,7 @@ Server Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.3", GitCommi
 
 ### Helm
 
-一些操作说明利用 Helm 来部署应用程序。如果您没有 
+一些操作说明利用 Helm 来部署应用程序。如果您没有
 Helm，那么您应该[安装 Helm](https://github.com/kubernetes/helm) 并
 在您的 Kubernetes 集群上初始化它：
 
@@ -182,19 +182,3 @@ Kibana 发现页面
 
 ## 参考资料
 * 这个 Java 微服务示例基于 Kubernetes 的 [Microprofile 演示应用程序](https://github.com/WASdev/sample.microservicebuilder.docs)。
-
-# 隐私声明
-
-可以配置包含这个包的样本 Kubernetes Yaml 文件来跟踪对 [IBM Cloud](https://www.bluemix.net/) 和其他 Kubernetes 平台的部署。每次部署时，都会将以下信息发送到 [Deployment Tracker](https://github.com/IBM/metrics-collector-service) 服务：
-
-* Kubernetes 集群提供者（`IBM Cloud、Minikube 等`）
-* Kubernetes 机器 ID
-* Kubernetes 集群 ID（仅来自 IBM Cloud 的集群）
-* Kubernetes 客户 ID（仅来自 IBM Cloud 的集群）
-* 这个 Kubernetes 作业中的环境变量。
-
-此数据收集自样本应用程序的 yaml 文件中的 Kubernetes 作业。IBM 使用此数据来跟踪与将样本应用程序部署到 IBM Cloud 相关的指标，以度量我们的示例的实用性，让我们可以持续改进为您提供的内容。仅跟踪包含对 Deployment Tracker 服务执行 ping 操作的代码的样本应用程序的部署过程。
-
-## 禁用部署跟踪
-
-请注释掉/删除“manifests/deploy-cloudant.yaml”文件末尾的 Metric Kubernetes Job 部分。
