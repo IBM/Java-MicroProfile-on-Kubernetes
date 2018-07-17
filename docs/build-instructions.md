@@ -9,28 +9,28 @@
 
 
 * `git clone` and `mvn clean package` the following projects:
-   * [Web-App](https://github.com/WASdev/sample.microservicebuilder.web-app)
+   * [Web-App](https://github.com/WASdev/sample.microservices.web-app)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.web-app.git
+      git clone https://github.com/WASdev/sample.microservices.web-app.git
   ```
-   * [Schedule](https://github.com/WASdev/sample.microservicebuilder.schedule)
+   * [Schedule](https://github.com/WASdev/sample.microservices.schedule)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.schedule.git
+      git clone https://github.com/WASdev/sample.microservices.schedule.git
   ```
-   * [Speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
+   * [Speaker](https://github.com/WASdev/sample.microservices.speaker)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.speaker.git
+      git clone https://github.com/WASdev/sample.microservices.speaker.git
   ```
-   * [Session](https://github.com/WASdev/sample.microservicebuilder.session)
+   * [Session](https://github.com/WASdev/sample.microservices.session)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.session.git
+      git clone https://github.com/WASdev/sample.microservices.session.git
   ```
-   * [Vote](https://github.com/WASdev/sample.microservicebuilder.vote)
+   * [Vote](https://github.com/WASdev/sample.microservices.vote)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.vote.git
+      git clone https://github.com/WASdev/sample.microservices.vote.git
   ```
 
-* `mvn clean package` in each ../sample.microservicebuilder.* projects
+* `mvn clean package` in each ../sample.microservices.* projects
 
 
 # 2. Build application containers
@@ -47,35 +47,35 @@ Use the following commands to build and push your microservice containers.
 Build the web-app microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-webapp sample.microservicebuilder.web-app
+docker build -t <docker_namespace>/microservice-webapp sample.microservices.web-app
 docker push <docker_namespace>/microservice-webapp
 ```
 
 Build the vote microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-vote sample.microservicebuilder.vote
+docker build -t <docker_namespace>/microservice-vote sample.microservices.vote
 docker push <docker_namespace>/microservice-vote-cloudant
 ```
 
 Build the schedule microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-schedule sample.microservicebuilder.schedule
+docker build -t <docker_namespace>/microservice-schedule sample.microservices.schedule
 docker push <docker_namespace>/microservice-schedule
 ```
 
 Build the speaker microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-speaker sample.microservicebuilder.speaker
+docker build -t <docker_namespace>/microservice-speaker sample.microservices.speaker
 docker push <docker_namespace>/microservice-speaker
 ```
 
 Build the session microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-session sample.microservicebuilder.session
+docker build -t <docker_namespace>/microservice-session sample.microservices.session
 docker push <docker_namespace>/microservice-session
 ```
 

@@ -8,7 +8,7 @@
 
 [MicroProfile](http://microprofile.io) 은 Enterprise Java를 마이크로서비스 아키텍처에 최적화하고 다양한 MicroProfile 런타임 간 애플리케이션 이식성을 제공하는 베이스라인 플랫폼 정의입니다. [Microservice Builder](https://developer.ibm.com/microservice-builder/)는 Java 및 MicroProfile 기반의 프로그래밍 모델과 툴을 사용한 마이크로서비스를 개발, 테스트 및 구현할 수 있도록 기능을 제공합니다.
 
-이 Microservice Builder [샘플 애플리케이션](https://github.com/WASdev/sample.microservicebuilder.docs)은 컨퍼런스 관리를 위한 웹 애플리케이션으로 다양한 이산형 마이크로서비스를 기반으로 합니다. 프론트엔드는 Angular로 작성되었고 백엔드 마이크로서비스는 Java로 작성되었습니다. 모두 쿠버네티스에 의해 관리되는 도커 컨테이너의 WebSphere Liberty에서 실행됩니다.
+이 Microservice Builder [샘플 애플리케이션](https://github.com/WASdev/sample.microservices.docs)은 컨퍼런스 관리를 위한 웹 애플리케이션으로 다양한 이산형 마이크로서비스를 기반으로 합니다. 프론트엔드는 Angular로 작성되었고 백엔드 마이크로서비스는 Java로 작성되었습니다. 모두 쿠버네티스에 의해 관리되는 도커 컨테이너의 WebSphere Liberty에서 실행됩니다.
 
 ![Flow](images/microprofile_kube_code.png)
 
@@ -21,7 +21,7 @@
 
 ## 전제 조건
 
-* 로컬 테스트를 위해서는 [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube), 클라우드에 구축하려면 [IBM Bluemix Container 서비스](https://github.com/IBM/container-journey-template)를 이용하여 쿠버네티스 클러스터를 생성합니다. Minikube에 구축하려면 [여기](https://github.com/WASdev/sample.microservicebuilder.docs/blob/master/dev_test_local_minikube.md)의 지침을 따르십시오.
+* 로컬 테스트를 위해서는 [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube), 클라우드에 구축하려면 [IBM Bluemix Container 서비스](https://github.com/IBM/container-journey-template)를 이용하여 쿠버네티스 클러스터를 생성합니다. Minikube에 구축하려면 [여기](https://github.com/WASdev/sample.microservices.docs/blob/master/dev_test_local_minikube.md)의 지침을 따르십시오.
 * 이 리포지토리의 코드는 정기적으로 [Bluemix 컨테이너 서비스에서 쿠버네티스 클러스터](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)를 대상으로 Travis를 사용하여 테스트합니다.
 * 샘플 코드를 얻기 위해 Git 클라이언트를 설치합니다.
 
@@ -48,7 +48,7 @@ git clone https://github.com/IBM/Java-MicroProfile-on-Kubernetes.git
 cd Java-MicroProfile-on-Kubernetes
 ```
 
-그런 다음, MicroProfile 컨퍼런스 애플리케이션에서 측정 항목 수집을 위한 [Microservice Builder Fabric](https://www.ibm.com/support/knowledgecenter/SS5PWC/fabric_concept.html) 및 [ELK Sample](https://github.com/WASdev/sample.microservicebuilder.helm.elk/blob/master/sample_elk_concept.md)이라는 2개의 add-on을 설치합니다. 
+그런 다음, MicroProfile 컨퍼런스 애플리케이션에서 측정 항목 수집을 위한 [Microservice Builder Fabric](https://www.ibm.com/support/knowledgecenter/SS5PWC/fabric_concept.html) 및 [ELK Sample](https://github.com/WASdev/sample.microservices.helm.elk/blob/master/sample_elk_concept.md)이라는 2개의 add-on을 설치합니다. 
   
 [Helm](https://github.com/kubernetes/helm)을 설치하고 Helm을 이용하여 쿠버네티스에 필수 add-on을 설치합니다.
 
@@ -56,11 +56,11 @@ cd Java-MicroProfile-on-Kubernetes
 helm init
 
 #Install Fabric
-helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
+helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservices/helm/
 helm install --name fabric mb/fabric
 
 #Install ELK Sample
-helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
+helm repo add mb-sample https://wasdev.github.io/sample.microservices.helm.elk/charts
 helm install --name sample-elk mb-sample/sample-elk
 ```
 쿠버네티스 클러스터에 Microservice Builder add-on을 설치하는데 대략 20분 정도가 소요됩니다. 그동안 애플리케이션 및 마이크로서비스 빌드를 시작합니다.
@@ -78,28 +78,28 @@ helm install --name sample-elk mb-sample/sample-elk
 
 
 * 다음 프로젝트들을 `git clone` 후 `mvn clean package`를 실행합니다:
-   * [Web-App](https://github.com/WASdev/sample.microservicebuilder.web-app)
+   * [Web-App](https://github.com/WASdev/sample.microservices.web-app)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.web-app.git
+      git clone https://github.com/WASdev/sample.microservices.web-app.git
   ```
-   * [Schedule](https://github.com/WASdev/sample.microservicebuilder.schedule)
+   * [Schedule](https://github.com/WASdev/sample.microservices.schedule)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.schedule.git
+      git clone https://github.com/WASdev/sample.microservices.schedule.git
   ```
-   * [Speaker](https://github.com/WASdev/sample.microservicebuilder.speaker)
+   * [Speaker](https://github.com/WASdev/sample.microservices.speaker)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.speaker.git
+      git clone https://github.com/WASdev/sample.microservices.speaker.git
   ```
-   * [Session](https://github.com/WASdev/sample.microservicebuilder.session)
+   * [Session](https://github.com/WASdev/sample.microservices.session)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.session.git
+      git clone https://github.com/WASdev/sample.microservices.session.git
   ```
-   * [Vote](https://github.com/WASdev/sample.microservicebuilder.vote)
+   * [Vote](https://github.com/WASdev/sample.microservices.vote)
    ```bash
-      git clone https://github.com/WASdev/sample.microservicebuilder.vote.git
+      git clone https://github.com/WASdev/sample.microservices.vote.git
   ```
 
-* 각 프로젝트의 ../sample.microservicebuilder.* 에서 `mvn clean package`를 실행합니다.
+* 각 프로젝트의 ../sample.microservices.* 에서 `mvn clean package`를 실행합니다.
 
 
 # 3. 애플리케이션 컨테이너 빌드하기
@@ -116,35 +116,35 @@ helm install --name sample-elk mb-sample/sample-elk
 web-app 마이크로 서비스 컨테이너 빌드하기
 
 ```bash
-docker build -t <docker_namespace>/microservice-webapp sample.microservicebuilder.web-app
+docker build -t <docker_namespace>/microservice-webapp sample.microservices.web-app
 docker push <docker_namespace>/microservice-webapp
 ```
 
 vote 마이크로 서비스 컨테이너 빌드하기
 
 ```bash
-docker build -t <docker_namespace>/microservice-vote sample.microservicebuilder.vote
+docker build -t <docker_namespace>/microservice-vote sample.microservices.vote
 docker push <docker_namespace>/microservice-vote-cloudant
 ```
 
 schedule 마이크로 서비스 컨테이너 빌드하기
 
 ```bash
-docker build -t <docker_namespace>/microservice-schedule sample.microservicebuilder.schedule
+docker build -t <docker_namespace>/microservice-schedule sample.microservices.schedule
 docker push <docker_namespace>/microservice-schedule
 ```
 
 speaker 마이크로 서비스 컨테이너 빌드하기
 
 ```bash
-docker build -t <docker_namespace>/microservice-speaker sample.microservicebuilder.speaker
+docker build -t <docker_namespace>/microservice-speaker sample.microservices.speaker
 docker push <docker_namespace>/microservice-speaker
 ```
 
 session 마이크로 서비스 컨테이너 빌드하기 
 
 ```bash
-docker build -t <docker_namespace>/microservice-session sample.microservicebuilder.session
+docker build -t <docker_namespace>/microservice-session sample.microservices.session
 docker push <docker_namespace>/microservice-session
 ```
 
@@ -241,7 +241,7 @@ Kibana 디스커버 페이지
   	* `helm delete --purge fabric`
 
 ## 참조
-* 이 Java 마이크로서비스 예제는 쿠버네티스의 [Microprofile Showcase Application](https://github.com/WASdev/sample.microservicebuilder.docs)를 기반으로 합니다.
+* 이 Java 마이크로서비스 예제는 쿠버네티스의 [Microprofile Showcase Application](https://github.com/WASdev/sample.microservices.docs)를 기반으로 합니다.
 
 # License
 [Apache 2.0](LICENSE)

@@ -8,7 +8,7 @@
 
 [MicroProfile](http://microprofile.io) 是一个基准平台定义，它针对微服务架构优化了企业 Java，还提供了跨多个 MicroProfile 运行时的应用程序可移植性。[Microservice Builder](https://developer.ibm.com/microservice-builder/) 提供了使用 Java 和基于 MicroProfile 的编程模型和工具来开发、测试和部署微服务的途径。
 
-Microservice Builder [样本应用程序](https://github.com/WASdev/sample.microservicebuilder.docs) 是一个用于管理会议的 Web 应用程序，它基于大量离散的微服务。前端是用 Angular 编写的，后端的微服务是用 Java 编写的。所有部分都是在 Kubernetes 管理的 Docker 容器中的 WebSphere Liberty 上运行。
+Microservice Builder [样本应用程序](https://github.com/WASdev/sample.microservices.docs) 是一个用于管理会议的 Web 应用程序，它基于大量离散的微服务。前端是用 Angular 编写的，后端的微服务是用 Java 编写的。所有部分都是在 Kubernetes 管理的 Docker 容器中的 WebSphere Liberty 上运行。
 
 ![操作流程](images/microprofile_kube_code.png)
 
@@ -65,19 +65,19 @@ cd Java-MicroProfile-on-Kubernetes
 
 然后，安装 2 个附加组件：
 * [Microservice Builder Fabric](https://www.ibm.com/support/knowledgecenter/SS5PWC/fabric_concept.html)
-* [ELK 样本](https://github.com/WASdev/sample.microservicebuilder.helm.elk/blob/master/sample_elk_concept.md)
+* [ELK 样本](https://github.com/WASdev/sample.microservices.helm.elk/blob/master/sample_elk_concept.md)
 
 安装 Microservice Builder Fabric：
 
 ```shell
-$ helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
+$ helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservices/helm/
 $ helm install --name fabric mb/fabric
 ```
 
 安装 ELK：
 
 ```shell
-$ helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
+$ helm repo add mb-sample https://wasdev.github.io/sample.microservices.helm.elk/charts
 $ helm install --name sample-elk mb-sample/sample-elk
 ```
 
@@ -181,4 +181,4 @@ Kibana 发现页面
   	* `helm delete --purge fabric`
 
 ## 参考资料
-* 这个 Java 微服务示例基于 Kubernetes 的 [Microprofile 演示应用程序](https://github.com/WASdev/sample.microservicebuilder.docs)。
+* 这个 Java 微服务示例基于 Kubernetes 的 [Microprofile 演示应用程序](https://github.com/WASdev/sample.microservices.docs)。
