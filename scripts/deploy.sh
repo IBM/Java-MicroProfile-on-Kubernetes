@@ -1,27 +1,5 @@
 #!/bin/bash
 
-function download_helm() {
-  #statements
-  curl  https://storage.googleapis.com/kubernetes-helm/helm-v2.2.3-linux-amd64.tar.gz > helm-v2.2.3-linux-amd64.tar.gz
-  tar -xf helm-v2.2.3-linux-amd64.tar.gz
-  chmod +x ./linux-amd64
-  # Install Tiller using Helm
-  echo "Install Tiller"
-  linux-amd64/helm init
-}
-
-function install_helm(){
-  #Add the repository
-  linux-amd64/helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
-  #Install Microservice Builder Fabric using Helm
-  linux-amd64/helm install mb/fabric
-  sleep 10s
-  #Install Microservice Builder ELK Sample
-  linux-amd64/helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
-  linux-amd64/helm install mb-sample/sample-elk
-}
-
-
 echo "Create Java microservices using MicroProfile"
 IP_ADDR=$(bx cs workers "$CLUSTER_NAME" | grep Ready | awk '{ print $2 }')
 if [ -z "$IP_ADDR" ]; then
@@ -39,10 +17,6 @@ eval "$exp"
 
 echo -e "Deleting previous version of Java microservices using MicroProfile if it exists"
 kubectl delete svc,rc,deployments,pods -l app=microprofile-app
-
-echo -e "Installing Helm"
-download_helm
-install_helm
 
 echo "Deploying Cloudant"
 cd manifests || return

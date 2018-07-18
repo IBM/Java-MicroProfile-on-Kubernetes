@@ -4,18 +4,17 @@
 
 *Read this in other languages: [한국어](README-ko.md)、[中国](README-cn.md).*
 
-This code demonstrates the deployment of a Java based microservices application using MicroProfile and Microservice Builder on Kubernetes.
+This code demonstrates the deployment of a Java based microservices application using MicroProfile on Kubernetes.
 
-[MicroProfile](http://microprofile.io) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. [Microservice Builder](https://developer.ibm.com/microservice-builder/) provides means to develop, test and deploy your microservices using a Java and MicroProfile based programming model and tools.
+[MicroProfile](http://microprofile.io) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes.
 
-The Microservice Builder [sample application](https://github.com/WASdev/sample.microservicebuilder.docs) is a web application for managing a conference and is based on a number of discrete microservices. The front end is written in Angular; the backing microservices are in Java. All run on WebSphere Liberty, in Docker containers managed by Kubernetes.
+The [sample application](https://github.com/WASdev/sample.microservices.docs) used is a web application for managing a conference and is based on a number of discrete microservices. The front end is written in Angular; the backing microservices are in Java. All run on WebSphere Liberty, in Docker containers managed by Kubernetes.
 
 ![Flow](images/microprofile_kube_code.png)
 
 ## Included Components
 - [Kubernetes Cluster](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
 - [MicroProfile](http://microprofile.io)
-- [Microservice Builder](https://developer.ibm.com/microservice-builder/)
 - [Bluemix DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
 - [Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
 
@@ -55,7 +54,7 @@ Happy Helming!
 
 ## Steps
 
-### 1. Install Microservice Builder add-ons
+### 1. Clone Repository
 
 First, clone our repository.
 ```shell
@@ -63,39 +62,11 @@ git clone https://github.com/IBM/Java-MicroProfile-on-Kubernetes.git
 cd Java-MicroProfile-on-Kubernetes
 ```
 
-Then, install the 2 add-ons:
-* [Microservice Builder Fabric](https://www.ibm.com/support/knowledgecenter/SS5PWC/fabric_concept.html)
-* [ELK Sample](https://github.com/WASdev/sample.microservicebuilder.helm.elk/blob/master/sample_elk_concept.md)
+### 2. Optional Step - Build Application
 
-Install Microservice Builder Fabric:
+If you want to [build the application](docs/build-instructions.md) yourself now would be a good time to do that. However for the sake of demonstration you can use the images that we've already built and uploaded to the journeycode docker repository.
 
-```shell
-$ helm repo add mb http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/microservicebuilder/helm/
-$ helm install --name fabric mb/fabric
-```
-
-Install ELK:
-
-```shell
-$ helm repo add mb-sample https://wasdev.github.io/sample.microservicebuilder.helm.elk/charts
-$ helm install --name sample-elk mb-sample/sample-elk
-```
-
-It will take up to 20 minutes to install the Microservice Builder Add-ons on your Kubernetes Cluster. If you want to [build the application](docs/build-instructions.md) yourself now would be a good time to do that. However for the sake of demonstration you can use the images that we've already built and uploaded to the journeycode docker repository.
-
-Before you start deploying your application, make sure the Microservice Builder Add-ons are installed and running.
-
-```shell
-$ kubectl get pods --show-all=true
-NAME                                    READY     STATUS      RESTARTS   AGE
-fabric-zipkin-4284087195-d6s1t          1/1       Running     0          11m
-key-retrieval-deploy-gkr9n              0/1       Completed   0          11m  # Make sure this job is completed
-kibana-dashboard-deploy-rd0q5           1/1       Running     0          11m
-sample-elk-sample-elk-461262821-rp1rl   3/3       Running     0          11m
-secret-generator-deploy-bj1jj           0/1       Completed   0          11m  # Make sure this job is completed
-```
-
-### 2. Optional Step - Deploy Istio
+### 3. Optional Step - Deploy Istio
 
 If you want to deploy and use [Istio](https://istio.io/) to control traffic between the microservices you can deploy it with the following command:
 
@@ -110,7 +81,7 @@ clusterrole "istio-mixer-istio-system" created
 initializerconfiguration "istio-sidecar" created
 ```
 
-### 3. Deploy Microservices
+### 4. Deploy Microservices
 
 Now, deploy the microservices with the command:
 
@@ -144,7 +115,7 @@ $ minikube ip
 
 With an Ingress controller enabled you can access the app via the IP provided by minikube above.
 
-Now you can use the link **http://[Public IP]** to access your application on browser and use **http://[Public IP]:30500** to access your Kibana for tracking the metrics.
+Now you can use the link **http://[Public IP]** to access your application in a browser.
 
 Web application home page
 
@@ -162,10 +133,6 @@ When you click on vote link
 
 ![Vote Info](images/ui4.png)
 
-Kibana discover page
-
-![Kibana](images/ui5.png)
-
 ## Troubleshooting
 
 * If your microservice instance is not running properly, you may check the logs using
@@ -176,9 +143,6 @@ Kibana discover page
 	* `kubectl delete -f manifests`
 * To delete istio
   & `kubectl delete -f istio`
-* To delete Microservice Builder add-ons
-  	* `helm delete --purge sample-elk`
-  	* `helm delete --purge fabric`
 
 ## References
-* This java microservices example is based on Kubernete's [Microprofile Showcase Application](https://github.com/WASdev/sample.microservicebuilder.docs).
+* This Java microservices example is based on Kubernete's [Microprofile Showcase Application](https://github.com/WASdev/sample.microservices.docs).
