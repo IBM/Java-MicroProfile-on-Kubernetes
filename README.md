@@ -24,7 +24,7 @@ The [sample application](https://github.com/WASdev/sample.microservices.docs) us
 
 In order to follow this guide you'll need a Kubernetes cluster. If you do not have access to an existing Kubernetes cluster then follow the instructions (in the link) for one of the following:
 
-_Note: These instructions are tested on Kubernetes 1.7.3.  Your mileage may vary if you use a version much lower of higher than this._
+_Note: These instructions are tested on Kubernetes 1.7.3.  Your mileage may vary if you use a version much lower or higher than this._
 
 * [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) on your workstation
 * [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template#container-journey-template---creating-a-kubernetes-cluster) to deploy in an IBM managed cluster (free small cluster)
