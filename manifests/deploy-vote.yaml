@@ -14,10 +14,10 @@ spec:
       containers:
       - name: microservice-vote
         #change the image name
-        image: journeycode/microservice-vote-cloudant
+        image: journeycode/microservice-ol-vote
         ports:
           - containerPort: 9080
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         env:
           - name: dbUsername
             valueFrom:
