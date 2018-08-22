@@ -8,6 +8,7 @@ sleep 3m
 
 function run_tests() {
   echo "Deploying Microservices"
+  cp templates/deploy-ingress.mini manifests/deploy-ingress.yaml
   kubectl create -f manifests
 
   sleep_func
