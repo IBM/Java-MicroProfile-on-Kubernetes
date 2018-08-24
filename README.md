@@ -102,7 +102,7 @@ $ minikube ip
 
 With an Ingress controller enabled you can access the app via the IP provided by minikube above.
 
-If running on IBM Cloud Container Service, you will use the hostname to access the application, which
+If running on IBM Cloud Kubernetes Service, you will use the hostname to access the application, which
 you can retrieve with the following:
 
 ```shell
