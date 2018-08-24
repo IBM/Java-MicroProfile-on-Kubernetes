@@ -9,25 +9,25 @@
 
 
 * `git clone` and `mvn clean package` the following projects:
-   * [Web-App](https://github.com/WASdev/sample.microservices.web-app)
+   * [Web-App](https://github.com/IBM/sample.microservices.web-app)
    ```bash
-      git clone https://github.com/WASdev/sample.microservices.web-app.git
+      git clone https://github.com/IBM/sample.microservices.web-app.git
   ```
-   * [Schedule](https://github.com/WASdev/sample.microservices.schedule)
+   * [Schedule](https://github.com/IBM/sample.microservices.schedule)
    ```bash
-      git clone https://github.com/WASdev/sample.microservices.schedule.git
+      git clone https://github.com/IBM/sample.microservices.schedule.git
   ```
-   * [Speaker](https://github.com/WASdev/sample.microservices.speaker)
+   * [Speaker](https://github.com/IBM/sample.microservices.speaker)
    ```bash
-      git clone https://github.com/WASdev/sample.microservices.speaker.git
+      git clone https://github.com/IBM/sample.microservices.speaker.git
   ```
-   * [Session](https://github.com/WASdev/sample.microservices.session)
+   * [Session](https://github.com/IBM/sample.microservices.session)
    ```bash
-      git clone https://github.com/WASdev/sample.microservices.session.git
+      git clone https://github.com/IBM/sample.microservices.session.git
   ```
-   * [Vote](https://github.com/WASdev/sample.microservices.vote)
+   * [Vote](https://github.com/IBM/sample.microservices.vote)
    ```bash
-      git clone https://github.com/WASdev/sample.microservices.vote.git
+      git clone https://github.com/IBM/sample.microservices.vote.git
   ```
 
 * `mvn clean package` in each ../sample.microservices.* projects
@@ -39,7 +39,7 @@ Install [Docker CLI](https://www.docker.com/community-edition#/download) and a [
 
 Use the following commands to build and push your microservice containers.
 
-> **Note:** For the following steps, you can build and push the images by running
+> **Note:** For the following steps, you can build and push the images by running (requires running get_code.sh in this directory first.)
 > ```shell
 > ./scripts/build_and_push_docker_images.sh <docker_namespace>
 > ```
@@ -47,36 +47,36 @@ Use the following commands to build and push your microservice containers.
 Build the web-app microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-webapp sample.microservices.web-app
-docker push <docker_namespace>/microservice-webapp
+docker build -t <docker_namespace>/microservice-ol-webapp sample.microservices.web-app
+docker push <docker_namespace>/microservice-ol-webapp
 ```
 
 Build the vote microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-vote sample.microservices.vote
-docker push <docker_namespace>/microservice-vote-cloudant
+docker build -t <docker_namespace>/microservice-ol-vote sample.microservices.vote
+docker push <docker_namespace>/microservice-ol-vote
 ```
 
 Build the schedule microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-schedule sample.microservices.schedule
-docker push <docker_namespace>/microservice-schedule
+docker build -t <docker_namespace>/microservice-ol-schedule sample.microservices.schedule
+docker push <docker_namespace>/microservice-ol-schedule
 ```
 
 Build the speaker microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-speaker sample.microservices.speaker
-docker push <docker_namespace>/microservice-speaker
+docker build -t <docker_namespace>/microservice-ol-speaker sample.microservices.speaker
+docker push <docker_namespace>/microservice-ol-speaker
 ```
 
 Build the session microservice container
 
 ```bash
-docker build -t <docker_namespace>/microservice-session sample.microservices.session
-docker push <docker_namespace>/microservice-session
+docker build -t <docker_namespace>/microservice-ol-session sample.microservices.session
+docker push <docker_namespace>/microservice-ol-session
 ```
 
 Build the nginx controller

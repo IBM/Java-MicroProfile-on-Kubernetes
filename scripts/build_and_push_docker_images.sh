@@ -12,9 +12,9 @@ if [ $# -ne 1 ]; then
     exit
 fi
 
-buildAndPushDockerImages sample.microservices.web-app "$1"/microservice-webapp  
-buildAndPushDockerImages sample.microservices.schedule "$1"/microservice-schedule
-buildAndPushDockerImages sample.microservices.speaker "$1"/microservice-speaker
-buildAndPushDockerImages sample.microservices.session "$1"/microservice-session
-buildAndPushDockerImages sample.microservices.vote "$1"/microservice-vote-cloudant
+buildAndPushDockerImages sample.microservices.web-app "$1"/microservice-ol-webapp  
+buildAndPushDockerImages sample.microservices.schedule "$1"/microservice-ol-schedule
+buildAndPushDockerImages sample.microservices.speaker "$1"/microservice-ol-speaker
+buildAndPushDockerImages sample.microservices.session "$1"/microservice-ol-session
+buildAndPushDockerImages sample.microservices.vote "$1"/microservice-ol-vote
 buildAndPushDockerImages nginx "$1"/nginx-server
