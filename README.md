@@ -8,7 +8,7 @@ This code demonstrates the deployment of a Java based microservices application 
 
 [MicroProfile](http://microprofile.io) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes.
 
-The [sample application](https://github.com/IBM/sample.microservices.web-app) used is a web application for managing a conference and is based on a number of discrete microservices. The front end is written in Angular; the backing microservices are in Java. All run on OpenLiberty, in Docker containers managed by Kubernetes.  It's based on a [demo application](https://github.com/eclipse/microprofile-conference) from the MicroProfile platform team.
+The [sample application](https://github.com/IBM/sample.microservices.web-app) used is a web application for managing a conference and is based on a number of discrete microservices. The front end is written in Angular; the backing microservices are in Java. All run on Open Liberty, in Docker containers managed by Kubernetes.  It's based on a [demo application](https://github.com/eclipse/microprofile-conference) from the MicroProfile platform team.
 
 ![Flow](images/microprofile_kube_code.png)
 
@@ -50,7 +50,7 @@ cd Java-MicroProfile-on-Kubernetes
 
 ### 2. Optional Step - Build Application
 
-If you want to [build the application](docs/build-instructions.md) yourself now would be a good time to do that. However for the sake of demonstration you can use the images that we've already built and uploaded to the journeycode docker repository.
+If you want to [build the application](docs/build-instructions.md) yourself now would be a good time to do that. Please follow the rebuild steps if you'd like to re-create images with the latest available Open Liberty version. However for the sake of demonstration you can use the images that we've already built and uploaded to the journeycode docker repository. 
 
 ### 3. Deploy Microservices
 
