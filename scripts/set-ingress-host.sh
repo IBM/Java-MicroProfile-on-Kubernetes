@@ -1,7 +1,8 @@
 if [ $# -ne 1 ];  then
    echo "usage: ./set-ingress-host.sh [cluster name]"
    exit
- fi
+fi
+cp ../templates/deploy-ingress.template ../manifests/deploy-ingress.yaml
 CLUSTER_NAME=$1
 
 INGRESS_SECRET=$(bx cs cluster-get "$CLUSTER_NAME" | grep -i "ingress secret" | cut -d : -f 2 | tr -d '\n ')
