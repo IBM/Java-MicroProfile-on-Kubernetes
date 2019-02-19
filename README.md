@@ -2,8 +2,6 @@
 
 # Deploy MicroProfile based Java microservices on Kubernetes.
 
-*Read this in other languages: [한국어](README-ko.md)、[中国](README-cn.md).*
-
 This code demonstrates the deployment of a Java based microservices application using MicroProfile on Kubernetes.
 
 [MicroProfile](https://microprofile.io/) is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes.
@@ -60,6 +58,7 @@ If using Minikube / ICP run:
 ```shell
 $ cd scripts
 $ ./set-ingress-minikube.sh
+$ ./cloudant-secret.sh
 ```
 
 If using IBM Cloud Kubernetes Service, run:
